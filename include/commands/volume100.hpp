@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class Volume100Command : public Command
 {
@@ -35,20 +35,20 @@ private:
         if (args.volume->count == 0)
         {
             uint8_t volume;
-            Tas5805m.getVolume100(&volume);
+            TAS5766m.getVolume100(&volume);
             ESP_LOGI(TAG, "Current volume is %d %", volume);
             return 0;
         }
 
         int volume = args.volume->ival[0];
-        if (volume < TAS5805M_VOLUME_PCT_MIN || volume > TAS5805M_VOLUME_PCT_MAX)
+        if (volume < TAS5766M_VOLUME_PCT_MIN || volume > TAS5766M_VOLUME_PCT_MAX)
         {
-            ESP_LOGI(TAG, "Invalid volume level! Must be between %d and %d.", TAS5805M_VOLUME_PCT_MIN, TAS5805M_VOLUME_PCT_MAX);
+            ESP_LOGI(TAG, "Invalid volume level! Must be between %d and %d.", TAS5766M_VOLUME_PCT_MIN, TAS5766M_VOLUME_PCT_MAX);
             return 1;
         }
 
         ESP_LOGI(TAG, "Setting volume to %d %", volume);
-        Tas5805m.setVolume100(volume);
+        TAS5766m.setVolume100(volume);
         return 0;
     }
 

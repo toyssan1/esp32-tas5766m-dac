@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class DacModeCommand : public Command
 {
@@ -52,9 +52,9 @@ private:
 
         if (args.mode->count == 0)
         {
-            TAS5805M_DAC_MODE mode;
-            Tas5805m.getDacMode(&mode);
-            ESP_LOGI(TAG, "Current DAC mode is %s", mode == TAS5805M_DAC_MODE_BTL ? "BTL" : "PBTL");
+            TAS5766M_DAC_MODE mode;
+            TAS5766m.getDacMode(&mode);
+            ESP_LOGI(TAG, "Current DAC mode is %s", mode == TAS5766M_DAC_MODE_BTL ? "BTL" : "PBTL");
             return 0;
         }
         
@@ -64,11 +64,11 @@ private:
         {
         case DAC_MODE_BTL:
             ESP_LOGI(TAG, "Setting DAC mode to BTL");
-            Tas5805m.setDacMode(TAS5805M_DAC_MODE_BTL);
+            TAS5766m.setDacMode(TAS5766M_DAC_MODE_BTL);
             break;
         case DAC_MODE_PBTL:
             ESP_LOGI(TAG, "Setting DAC mode to PBTL");
-            Tas5805m.setDacMode(TAS5805M_DAC_MODE_PBTL);
+            TAS5766m.setDacMode(TAS5766M_DAC_MODE_PBTL);
             break;
         case DAC_MODE_INVALID:
             ESP_LOGI(TAG, "Invalid DAC mode! Must be 'btl' or 'pbtl'.");
@@ -98,7 +98,7 @@ public:
     {
         return {
             .command = "dacmode",
-            .help = "Set the DAC mode of the TAS5805M amplifier",
+            .help = "Set the DAC mode of the TAS5766M amplifier",
             .hint = NULL,
             .func = &dacmode_command_handler,
             .argtable = &dacmode_args};

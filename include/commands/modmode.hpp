@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class ModulationCommand : public Command
 {
@@ -33,7 +33,7 @@ private:
         return MOD_INVALID;
     }
 
-    static TAS5805M_MOD_MODE map_mod_mode(mod_mode_t mode)
+    static TAS5766M_MOD_MODE map_mod_mode(mod_mode_t mode)
     {
         switch (mode)
         {
@@ -46,7 +46,7 @@ private:
         }
     }
 
-    static char *mod_mode_to_string(TAS5805M_MOD_MODE mode)
+    static char *mod_mode_to_string(TAS5766M_MOD_MODE mode)
     {
         switch (mode)
         {
@@ -84,7 +84,7 @@ private:
         return SW_INVALID;
     }
 
-    static TAS5805M_SW_FREQ map_sw_freq(sw_freq_t freq)
+    static TAS5766M_SW_FREQ map_sw_freq(sw_freq_t freq)
     {
         switch (freq)
         {
@@ -99,7 +99,7 @@ private:
         }
     }
 
-    static char *sw_freq_to_string(TAS5805M_SW_FREQ freq)
+    static char *sw_freq_to_string(TAS5766M_SW_FREQ freq)
     {
         switch (freq)
         {
@@ -139,7 +139,7 @@ private:
         return BD_FREQ_INVALID;
     }
 
-    static TAS5805M_BD_FREQ map_bd_freq(bd_freq_t freq)
+    static TAS5766M_BD_FREQ map_bd_freq(bd_freq_t freq)
     {
         switch (freq)
         {
@@ -154,7 +154,7 @@ private:
         }
     }
 
-    static char *bd_freq_to_string(TAS5805M_BD_FREQ freq)
+    static char *bd_freq_to_string(TAS5766M_BD_FREQ freq)
     {
         switch (freq)
         {
@@ -184,10 +184,10 @@ private:
 
         if (mod_args.mode->count == 0)
         {
-            TAS5805M_MOD_MODE mode;
-            TAS5805M_SW_FREQ freq;
-            TAS5805M_BD_FREQ bd_freq;
-            Tas5805m.getModulationMode(&mode, &freq, &bd_freq);
+            TAS5766M_MOD_MODE mode;
+            TAS5766M_SW_FREQ freq;
+            TAS5766M_BD_FREQ bd_freq;
+            TAS5766m.getModulationMode(&mode, &freq, &bd_freq);
             ESP_LOGI(TAG, "Current modulation mode is %s, dsp processing freq: %s, output switching freq: %s", 
                 mod_mode_to_string(mode), sw_freq_to_string(freq), bd_freq_to_string(bd_freq));
             return 0;
@@ -214,12 +214,12 @@ private:
             return ESP_ERR_INVALID_ARG;
         }
 
-        TAS5805M_MOD_MODE mode = map_mod_mode(_mode);
-        TAS5805M_SW_FREQ freq = map_sw_freq(_freq);
-        TAS5805M_BD_FREQ bd_freq = map_bd_freq(_bd_freq);
+        TAS5766M_MOD_MODE mode = map_mod_mode(_mode);
+        TAS5766M_SW_FREQ freq = map_sw_freq(_freq);
+        TAS5766M_BD_FREQ bd_freq = map_bd_freq(_bd_freq);
         ESP_LOGI("CMD", "Setting modulation mode to %s, dsp processing freq: %s, switching freq: %s", 
             mod_mode_to_string(mode), sw_freq_to_string(freq), bd_freq_to_string(bd_freq));
-        Tas5805m.setModulationMode(mode, freq, bd_freq);
+        TAS5766m.setModulationMode(mode, freq, bd_freq);
         return 0;
     }
 

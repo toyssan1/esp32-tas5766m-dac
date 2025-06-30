@@ -2,12 +2,12 @@
 
 #include <string.h>
 #include <Wire.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 // Enum for AMP states
 typedef enum {
@@ -45,19 +45,19 @@ class AmpStateCommand : public Command
         return AMP_INVALID;
     }
 
-    static char* map_amp_state(TAS5805M_CTRL_STATE state) 
+    static char* map_amp_state(TAS5766M_CTRL_STATE state) 
     {
         switch (state)
         {
-        case TAS5805M_CTRL_PLAY:
+        case TAS5766M_CTRL_PLAY:
             return "PLAY";
-        case TAS5805M_CTRL_HI_Z:
+        case TAS5766M_CTRL_HI_Z:
             return "HIGH-Z";
-        case TAS5805M_CTRL_SLEEP:
+        case TAS5766M_CTRL_SLEEP:
             return "SLEEP";
-        case TAS5805M_CTRL_MUTE:
+        case TAS5766M_CTRL_MUTE:
             return "MUTE";
-        case TAS5805M_CTRL_DEEP_SLEEP:
+        case TAS5766M_CTRL_DEEP_SLEEP:
             return "DEEP SLEEP";
         default:
             return "UNKNOWN";
@@ -77,8 +77,8 @@ class AmpStateCommand : public Command
 
         if (amp_args.mode->count == 0)
         {
-            TAS5805M_CTRL_STATE state;
-            Tas5805m.getState(&state);
+            TAS5766M_CTRL_STATE state;
+            TAS5766m.getState(&state);
             ESP_LOGI(TAG, "Current AMP state is %s", map_amp_state(state));
             return 0;
         }
@@ -89,23 +89,23 @@ class AmpStateCommand : public Command
         {
             case AMP_PLAY:
                 ESP_LOGI(TAG, "AMP set to PLAY mode");
-                ESP_ERROR_CHECK(Tas5805m.setState(TAS5805M_CTRL_PLAY));
+                ESP_ERROR_CHECK(TAS5766m.setState(TAS5766M_CTRL_PLAY));
                 break;
             case AMP_HIGHZ:
                 ESP_LOGI(TAG, "AMP set to HIGH-Z mode");
-                ESP_ERROR_CHECK(Tas5805m.setState(TAS5805M_CTRL_HI_Z));
+                ESP_ERROR_CHECK(TAS5766m.setState(TAS5766M_CTRL_HI_Z));
                 break;
             case AMP_SLEEP:
                 ESP_LOGI(TAG, "AMP set to SLEEP mode");
-                ESP_ERROR_CHECK(Tas5805m.setState(TAS5805M_CTRL_SLEEP));
+                ESP_ERROR_CHECK(TAS5766m.setState(TAS5766M_CTRL_SLEEP));
                 break;
             case AMP_MUTE:
                 ESP_LOGI(TAG, "AMP set to MUTE mode");
-                ESP_ERROR_CHECK(Tas5805m.setState(TAS5805M_CTRL_MUTE));
+                ESP_ERROR_CHECK(TAS5766m.setState(TAS5766M_CTRL_MUTE));
                 break;
             case AMP_DEEP_SLEEP:
                 ESP_LOGI(TAG, "AMP set to DEEP SLEEP mode");
-                ESP_ERROR_CHECK(Tas5805m.setState(TAS5805M_CTRL_DEEP_SLEEP));
+                ESP_ERROR_CHECK(TAS5766m.setState(TAS5766M_CTRL_DEEP_SLEEP));
                 break;
 
             default:

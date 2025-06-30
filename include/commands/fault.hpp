@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class FaultCommand : public Command
 {
@@ -27,9 +27,9 @@ private:
         if (fault_args.action->count == 0)
         {
             checkFaults();
-            // TAS5805M_FAULT fault;
-            // Tas5805m.getFaultState(&fault);
-            // Tas5805m.decodeFaults(fault);
+            // TAS5766M_FAULT fault;
+            // TAS5766m.getFaultState(&fault);
+            // TAS5766m.decodeFaults(fault);
             return 0;
         }
 
@@ -116,31 +116,31 @@ public:
 
     static void checkFaults()
     {
-        TAS5805M_FS_FREQ freq;
+        TAS5766M_FS_FREQ freq;
         uint8_t ratio;
-        Tas5805m.getFsFreq(&freq);
-        Tas5805m.getBckRatio(&ratio);
+        TAS5766m.getFsFreq(&freq);
+        TAS5766m.getBckRatio(&ratio);
         
-        TAS5805M_CTRL_STATE state;
-        Tas5805m.getPowerState(&state);
+        TAS5766M_CTRL_STATE state;
+        TAS5766m.getPowerState(&state);
         
         bool is_r_muted, is_l_muted;
-        Tas5805m.getAutomuteState(&is_r_muted, &is_l_muted);
+        TAS5766m.getAutomuteState(&is_r_muted, &is_l_muted);
         
         ESP_LOGI(TAG, "FS Frequency: %s, BCK ratio: %d; Power state: %s; Automute: R: %d, L: %d", 
-            tas5805m_map_fs_freq(freq), ratio, 
-            tas5805m_map_amp_state(state), 
+            TAS5766m_map_fs_freq(freq), ratio, 
+            TAS5766m_map_amp_state(state), 
             is_r_muted, is_l_muted
         );
         
-        TAS5805M_FAULT fault;
-        Tas5805m.getFaultState(&fault);
-        Tas5805m.decodeFaults(fault);
+        TAS5766M_FAULT fault;
+        TAS5766m.getFaultState(&fault);
+        TAS5766m.decodeFaults(fault);
 
         if (fault.err0 || fault.err1 || fault.err2 || fault.ot_warn)
         {
             ESP_LOGI(TAG, "Clearing fault states");
-            Tas5805m.clearFaultState();
+            TAS5766m.clearFaultState();
         }
     }
 };

@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class GainCommand : public Command
 {
@@ -33,20 +33,20 @@ private:
         if (gain_args.gain->count == 0)
         {
             uint8_t gain;
-            Tas5805m.getAnalogGain(&gain);
+            TAS5766m.getAnalogGain(&gain);
             ESP_LOGI(TAG, "Current gain index is %d, which is %f Db", gain, gain_to_db(gain));
             return 0;
         }
 
         int gain_ix = gain_args.gain->ival[0];
-        if (gain_ix < TAS5805M_MAX_GAIN || gain_ix > TAS5805M_MIN_GAIN)
+        if (gain_ix < TAS5766M_MAX_GAIN || gain_ix > TAS5766M_MIN_GAIN)
         {
             ESP_LOGI(TAG, "Invalid gain level! Must be between 0 and 31");
             return 1;
         }
 
         ESP_LOGI(TAG, "Setting gain to %d, which is %f Db", gain_ix, gain_to_db(gain_ix)); 
-        Tas5805m.setAnalogGain(gain_ix);
+        TAS5766m.setAnalogGain(gain_ix);
         return 0;
     }
 

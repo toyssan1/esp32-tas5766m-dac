@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string.h>
-#include <tas5805m.hpp>
+#include <tas5766m.hpp>
 
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern tas5805m Tas5805m;
+extern TAS5766m TAS5766m;
 
 class EqCommand : public Command
 {
@@ -26,7 +26,7 @@ private:
         if (eq_args.action->count == 0)
         {
             bool eq_enabled;
-            Tas5805m.getEqEnabled(&eq_enabled);
+            TAS5766m.getEqEnabled(&eq_enabled);
             ESP_LOGI(TAG, "EQ enable state is %d", eq_enabled);
             return 0;
         }
@@ -36,12 +36,12 @@ private:
         if (strcmp(action, "on") == 0)
         {
             ESP_LOGI("CMD", "Enabling EQ");
-            Tas5805m.setEqEnabled(true);
+            TAS5766m.setEqEnabled(true);
         }
         else if (strcmp(action, "off") == 0)
         {
             ESP_LOGI("CMD", "Disabling EQ");
-            Tas5805m.setEqEnabled(false);
+            TAS5766m.setEqEnabled(false);
         }
         else if (strcmp(action, "get") == 0)
         {
@@ -53,16 +53,16 @@ private:
             }
 
             int band = eq_args.band->ival[0];
-            if (band < 0 || band >= TAS5805M_EQ_BANDS)
+            if (band < 0 || band >= TAS5766M_EQ_BANDS)
             {
                 ESP_LOGE(TAG, "%s: Invalid band %d", __func__, band);
                 return ESP_FAIL;
             }
 
             int gain;
-            Tas5805m.getEqGain(band, &gain);
+            TAS5766m.getEqGain(band, &gain);
 
-            ESP_LOGI("CMD", "EQ band %d (%d Hz) has gain %d", band, tas5805m_eq_bands[band], gain);
+            ESP_LOGI("CMD", "EQ band %d (%d Hz) has gain %d", band, TAS5766m_eq_bands[band], gain);
         }
         else if (strcmp(action, "set") == 0)
         {
@@ -74,21 +74,21 @@ private:
             }
 
             int band = eq_args.band->ival[0];
-            if (band < 0 || band >= TAS5805M_EQ_BANDS)
+            if (band < 0 || band >= TAS5766M_EQ_BANDS)
             {
                 ESP_LOGE(TAG, "%s: Invalid band %d", __func__, band);
                 return ESP_FAIL;
             }
 
             int gain = eq_args.gain->ival[0];
-            if (gain < TAS5805M_EQ_MIN_DB || gain > TAS5805M_EQ_MAX_DB)
+            if (gain < TAS5766M_EQ_MIN_DB || gain > TAS5766M_EQ_MAX_DB)
             {
                 ESP_LOGE(TAG, "%s: Invalid gain %d", __func__, gain);
                 return ESP_ERR_INVALID_ARG;
             }
 
             ESP_LOGI("CMD", "Setting EQ band %d to gain %d", band, gain);
-            Tas5805m.setEqGain(band, gain);
+            TAS5766m.setEqGain(band, gain);
         }
         else
         {

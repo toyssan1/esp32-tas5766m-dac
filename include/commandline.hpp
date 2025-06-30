@@ -6,7 +6,7 @@
 #include "esp_vfs_dev.h"
 
 #include "commands/command.hpp"
-#ifdef CONFIG_DAC_TAS5805M
+#ifdef CONFIG_DAC_TAS5766M
 #include "commands/ampstate.hpp"
 #include "commands/volume.hpp"
 #include "commands/volume100.hpp"
@@ -23,14 +23,14 @@ class CommandLine
 private:
 
 
-#ifdef CONFIG_DAC_TAS5805M
+#ifdef CONFIG_DAC_TAS5766M
     const static int commands_size = 9;
 #else
     const static int commands_size = 0;
 #endif
 
     Command *commands[commands_size] = {
-        #ifdef CONFIG_DAC_TAS5805M
+        #ifdef CONFIG_DAC_TAS5766M
         new AmpStateCommand(),
         new VolumeCommand(),
         new Volume100Command(),
