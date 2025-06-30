@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "tas5766m_eq.h": "c",
+        "tas5766m_cfg.h": "c",
+        "tas5766m_2.0+minimal.h": "c"
+    }
+}
