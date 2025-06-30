@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class VolumeCommand : public Command
 {
@@ -40,7 +40,7 @@ private:
         if (args.volume->count == 0)
         {
             uint8_t volume;
-            TAS5766m.getVolume(&volume);
+            Tas5766m.getVolume(&volume);
             ESP_LOGI(TAG, "Current volume is %d, which is %f Db", volume, volume_to_db(volume));
             return 0;
         }
@@ -53,7 +53,7 @@ private:
         }
 
         ESP_LOGI(TAG, "Setting volume to %d% [%d..%d], which is %f Db", volume, TAS5766M_VOLUME_MIN, TAS5766M_VOLUME_MAX, volume_to_db(volume));
-        TAS5766m.setVolume(volume);
+        Tas5766m.setVolume(volume);
         return 0;
     }
 

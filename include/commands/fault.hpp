@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class FaultCommand : public Command
 {
@@ -28,8 +28,8 @@ private:
         {
             checkFaults();
             // TAS5766M_FAULT fault;
-            // TAS5766m.getFaultState(&fault);
-            // TAS5766m.decodeFaults(fault);
+            // Tas5766m.getFaultState(&fault);
+            // Tas5766m.decodeFaults(fault);
             return 0;
         }
 
@@ -118,29 +118,29 @@ public:
     {
         TAS5766M_FS_FREQ freq;
         uint8_t ratio;
-        TAS5766m.getFsFreq(&freq);
-        TAS5766m.getBckRatio(&ratio);
+        Tas5766m.getFsFreq(&freq);
+        Tas5766m.getBckRatio(&ratio);
         
         TAS5766M_CTRL_STATE state;
-        TAS5766m.getPowerState(&state);
+        Tas5766m.getPowerState(&state);
         
         bool is_r_muted, is_l_muted;
-        TAS5766m.getAutomuteState(&is_r_muted, &is_l_muted);
+        Tas5766m.getAutomuteState(&is_r_muted, &is_l_muted);
         
         ESP_LOGI(TAG, "FS Frequency: %s, BCK ratio: %d; Power state: %s; Automute: R: %d, L: %d", 
-            TAS5766m_map_fs_freq(freq), ratio, 
-            TAS5766m_map_amp_state(state), 
+            tas5766m_map_fs_freq(freq), ratio, 
+            tas5766m_map_amp_state(state), 
             is_r_muted, is_l_muted
         );
         
         TAS5766M_FAULT fault;
-        TAS5766m.getFaultState(&fault);
-        TAS5766m.decodeFaults(fault);
+        Tas5766m.getFaultState(&fault);
+        Tas5766m.decodeFaults(fault);
 
         if (fault.err0 || fault.err1 || fault.err2 || fault.ot_warn)
         {
             ESP_LOGI(TAG, "Clearing fault states");
-            TAS5766m.clearFaultState();
+            Tas5766m.clearFaultState();
         }
     }
 };

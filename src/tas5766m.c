@@ -11,40 +11,40 @@
 #include "../eq/tas5766m_eq.h"
 
 #if defined(CONFIG_TAS5766M_DSP_STEREO)
-  #pragma message("TAS5766m_2.0+basic config is used")
-  #include "../startup/TAS5766m_2.0+basic.h"
+  #pragma message("tas5766m_2.0+basic config is used")
+  #include "../startup/tas5766m_2.0+basic.h"
 #elif defined(CONFIG_TAS5766M_DSP_MONO)
-  #pragma message("TAS5766m_1.0+basic config is used")
-  #include "../startup/TAS5766m_1.0+basic.h"
+  #pragma message("tas5766m_1.0+basic config is used")
+  #include "../startup/tas5766m_1.0+basic.h"
 #elif defined(CONFIG_TAS5766M_DSP_SUBWOOFER_40)
-  #pragma message("TAS5766m_0.1+eq_40Hz_cutoff config is used")
-  #include "../startup/TAS5766m_0.1+eq_40Hz_cutoff.h"
+  #pragma message("tas5766m_0.1+eq_40Hz_cutoff config is used")
+  #include "../startup/tas5766m_0.1+eq_40Hz_cutoff.h"
 #elif defined(CONFIG_TAS5766M_DSP_SUBWOOFER_60)
-  #pragma message("TAS5766m_0.1+eq_60Hz_cutoff config is used")
-  #include "../startup/TAS5766m_0.1+eq_60Hz_cutoff.h"
+  #pragma message("tas5766m_0.1+eq_60Hz_cutoff config is used")
+  #include "../startup/tas5766m_0.1+eq_60Hz_cutoff.h"
 #elif defined(CONFIG_TAS5766M_DSP_SUBWOOFER_100)
-  #pragma message("TAS5766m_0.1+eq_100Hz_cutoff config is used")
-  #include "../startup/TAS5766m_0.1+eq_100Hz_cutoff.h"
+  #pragma message("tas5766m_0.1+eq_100Hz_cutoff config is used")
+  #include "../startup/tas5766m_0.1+eq_100Hz_cutoff.h"
 #elif defined(CONFIG_TAS5766M_DSP_BIAMP)
-  #pragma message("TAS5766m_1.1+eq_60Hz_cutoff+mono config is used")
-  #include "../startup/TAS5766m_1.1+eq_60Hz_cutoff+mono.h"
+  #pragma message("tas5766m_1.1+eq_60Hz_cutoff+mono config is used")
+  #include "../startup/tas5766m_1.1+eq_60Hz_cutoff+mono.h"
 #elif defined(CONFIG_TAS5766M_DSP_BIAMP_60_LEFT)
-  #pragma message("TAS5766m_1.1+eq_60Hz_cutoff+left config is used")
-  #include "../startup/TAS5766m_1.1+eq_60Hz_cutoff+left.h"
+  #pragma message("tas5766m_1.1+eq_60Hz_cutoff+left config is used")
+  #include "../startup/tas5766m_1.1+eq_60Hz_cutoff+left.h"
 #elif defined(CONFIG_TAS5766M_DSP_BIAMP_60_RIGHT)
-  #pragma message("TAS5766m_1.1+eq_60Hz_cutoff+right config is used")
-  #include "../startup/TAS5766m_1.1+eq_60Hz_cutoff+right.h"
+  #pragma message("tas5766m_1.1+eq_60Hz_cutoff+right config is used")
+  #include "../startup/tas5766m_1.1+eq_60Hz_cutoff+right.h"
 #elif defined(CONFIG_TAS5766M_DSP_STEREO_LOUDNESS_1)
-  #pragma message("TAS5766m_2.0+eq(+9db_20Hz)(-1Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
-  #include "../startup/custom/TAS5766m_2.0+eq(+9db_20Hz)(-1Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
+  #pragma message("tas5766m_2.0+eq(+9db_20Hz)(-1Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
+  #include "../startup/custom/tas5766m_2.0+eq(+9db_20Hz)(-1Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
 #elif defined(CONFIG_TAS5766M_DSP_STEREO_LOUDNESS_2)
-  #pragma message("TAS5766m_2.0+eq(+9db_20Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
-  #include "../startup/custom/TAS5766m_2.0+eq(+9db_20Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
+  #pragma message("tas5766m_2.0+eq(+9db_20Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
+  #include "../startup/custom/tas5766m_2.0+eq(+9db_20Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
 #elif defined(CONFIG_TAS5766M_DSP_STEREO_LOUDNESS_3)
-  #pragma message("TAS5766m_2.0+eq(+12db_30Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
-  #include "../startup/custom/TAS5766m_2.0+eq(+12db_30Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
+  #pragma message("tas5766m_2.0+eq(+12db_30Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz) config is used")
+  #include "../startup/custom/tas5766m_2.0+eq(+12db_30Hz)(-3Db_500Hz)(+3Db_8kHz)(+3Db_15kHz).h"
 #else
-  #pragma message("TAS5766m_2.0+minimal config is used")
+  #pragma message("tas5766m_2.0+minimal config is used")
   #include "../startup/tas5766m_2.0+minimal.h"
 #endif
 
@@ -59,12 +59,12 @@ static const char *TAG = "TAS5766";
 
 #define TAS5766M_SET_BOOK_AND_PAGE(BOOK, PAGE) \
     do { \
-      TAS5766m_write_byte(TAS5766M_REG_PAGE_SET, TAS5766M_REG_PAGE_ZERO); \
-      TAS5766m_write_byte(TAS5766M_REG_BOOK_SET, BOOK);                   \
-      TAS5766m_write_byte(TAS5766M_REG_PAGE_SET, PAGE);                   \
+      tas5766m_write_byte(TAS5766M_REG_PAGE_SET, TAS5766M_REG_PAGE_ZERO); \
+      tas5766m_write_byte(TAS5766M_REG_BOOK_SET, BOOK);                   \
+      tas5766m_write_byte(TAS5766M_REG_PAGE_SET, PAGE);                   \
     } while (0)
 
-TAS5766_STATE TAS5766m_state = {
+TAS5766_STATE tas5766m_state = {
     .is_muted = false,
     .state = TAS5766M_CTRL_PLAY,
     .eq_gain = { 0 },                  // todo: can be redefined in startup sequence
@@ -73,7 +73,7 @@ TAS5766_STATE TAS5766m_state = {
 
 /* Helper Functions */
 // Reading of TAS5766M-Register
-esp_err_t TAS5766m_read_byte(uint8_t register_name, uint8_t *data)
+esp_err_t tas5766m_read_byte(uint8_t register_name, uint8_t *data)
 {
 
   int ret;
@@ -105,7 +105,7 @@ esp_err_t TAS5766m_read_byte(uint8_t register_name, uint8_t *data)
 }
 
 // Writing of TAS5766M-Register
-esp_err_t TAS5766m_write_byte(uint8_t register_name, uint8_t value)
+esp_err_t tas5766m_write_byte(uint8_t register_name, uint8_t value)
 {
   ESP_LOGV(TAG, "%s: 0x%02x <- 0x%02x", __func__, register_name, value);
   int ret = 0;
@@ -129,7 +129,7 @@ esp_err_t TAS5766m_write_byte(uint8_t register_name, uint8_t value)
   return ret;
 }
 
-esp_err_t TAS5766m_write_bytes(uint8_t *reg,
+esp_err_t tas5766m_write_bytes(uint8_t *reg,
                                int regLen, uint8_t *data, int datalen)
 {
   int ret = ESP_OK;
@@ -158,7 +158,7 @@ esp_err_t TAS5766m_write_bytes(uint8_t *reg,
   return ret;
 }
 
-static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf, int size)
+static esp_err_t tas5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf, int size)
 {
   int i = 0;
   esp_err_t ret = ESP_OK;
@@ -174,7 +174,7 @@ static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf,
       vTaskDelay(conf_buf[i].value / portTICK_RATE_MS);
       break;
     case CFG_META_BURST:
-      ret = TAS5766m_write_bytes((unsigned char *)(&conf_buf[i + 1].offset), 1,
+      ret = tas5766m_write_bytes((unsigned char *)(&conf_buf[i + 1].offset), 1,
                                  (unsigned char *)(&conf_buf[i + 1].value), conf_buf[i].value);
       i += (conf_buf[i].value / 2) + 1;
       break;
@@ -182,11 +182,11 @@ static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf,
       if (CFG_END_2 == conf_buf[i + 1].offset &&
           CFG_END_3 == conf_buf[i + 2].offset)
       {
-        ESP_LOGD(TAG, "%s: End of TAS5766m reg: %d", __func__, i);
+        ESP_LOGD(TAG, "%s: End of tas5766m reg: %d", __func__, i);
       }
       break;
     default:
-      ret = TAS5766m_write_bytes((unsigned char *)(&conf_buf[i].offset), 1,
+      ret = tas5766m_write_bytes((unsigned char *)(&conf_buf[i].offset), 1,
                                  (unsigned char *)(&conf_buf[i].value), 1);
       ESP_LOGV(TAG, "\t0x%02x <- 0x%02x", conf_buf[i].offset, conf_buf[i].value);
       break;
@@ -195,7 +195,7 @@ static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf,
   }
   if (ret != ESP_OK)
   {
-    ESP_LOGE(TAG, "%s: Fail to load configuration to TAS5766m", __func__);
+    ESP_LOGE(TAG, "%s: Fail to load configuration to tas5766m", __func__);
     return ESP_FAIL;
   }
   ESP_LOGD(TAG, "%s leave; wrote %d registers", __func__, i);
@@ -204,7 +204,7 @@ static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf,
 
 /* Public API */
 // Inits the TAS5766M
-esp_err_t TAS5766m_init()
+esp_err_t tas5766m_init()
 {
   /// i2c_master_init();
 
@@ -226,20 +226,20 @@ esp_err_t TAS5766m_init()
   //
   // i2s_driver_start(TAS5766M_I2S_NUM);
   // Once I2S clocks are stable, set the device into HiZ state and enable DSP via the I2C control port.
-  ESP_ERROR_CHECK(TAS5766m_set_state(TAS5766M_CTRL_HI_Z));
+  ESP_ERROR_CHECK(tas5766m_set_state(TAS5766M_CTRL_HI_Z));
   vTaskDelay(20 / portTICK_RATE_MS);
   // 5. Wait 5ms at least. Then initialize the DSP Coefficient, then set the device to Play state.
-  int ret = TAS5766m_transmit_registers(
+  int ret = tas5766m_transmit_registers(
       tas5766m_registers,
       sizeof(tas5766m_registers) / sizeof(tas5766m_registers[0]));
-  ESP_ERROR_CHECK(TAS5766m_set_state(TAS5766M_CTRL_PLAY));
+  ESP_ERROR_CHECK(tas5766m_set_state(TAS5766M_CTRL_PLAY));
 
-  TAS5766M_ASSERT(ret, "Fail to initialize TAS5766m PA", ESP_FAIL);
+  TAS5766M_ASSERT(ret, "Fail to initialize tas5766m PA", ESP_FAIL);
   return ret;
 }
 
 // Setting the Volume [0..255], 0 is mute, 255 is full blast
-esp_err_t TAS5766m_set_volume(uint8_t vol)
+esp_err_t tas5766m_set_volume(uint8_t vol)
 {
   esp_err_t ret = ESP_OK;
   if (vol < TAS5766M_VOLUME_MIN)
@@ -251,7 +251,7 @@ esp_err_t TAS5766m_set_volume(uint8_t vol)
     vol = TAS5766M_VOLUME_MAX;
   }
 
-  ret = TAS5766m_write_byte(TAS5766M_DIG_VOL_CTRL, vol);
+  ret = tas5766m_write_byte(TAS5766M_DIG_VOL_CTRL, vol);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -261,10 +261,10 @@ esp_err_t TAS5766m_set_volume(uint8_t vol)
 }
 
 // Getting the Volume [0..255], 0 is mute, 255 is full blast
-esp_err_t TAS5766m_get_volume(uint8_t *vol)
+esp_err_t tas5766m_get_volume(uint8_t *vol)
 {
   esp_err_t ret = ESP_OK;
-  ret = TAS5766m_read_byte(TAS5766M_DIG_VOL_CTRL, vol);
+  ret = tas5766m_read_byte(TAS5766M_DIG_VOL_CTRL, vol);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -273,7 +273,7 @@ esp_err_t TAS5766m_get_volume(uint8_t *vol)
 }
 
 // Setting the Volume [0..124], where 100 is 0 Db, 0 is mute
-esp_err_t TAS5766m_set_volume_pct(uint8_t vol)
+esp_err_t tas5766m_set_volume_pct(uint8_t vol)
 {
   esp_err_t ret = ESP_OK;
   if (vol < TAS5766M_VOLUME_PCT_MIN)
@@ -283,14 +283,14 @@ esp_err_t TAS5766m_set_volume_pct(uint8_t vol)
 
   // Convert to 0..255
   uint volume = vol == 0 ? TAS5766M_VOLUME_MAX : ( -2 * vol + 248 );
-  return TAS5766m_set_volume(volume);
+  return tas5766m_set_volume(volume);
 }
 
 // Get the Volume [0..124], where 100 is 0 Db, 0 is mute
-esp_err_t TAS5766m_get_volume_pct(uint8_t *vol)
+esp_err_t tas5766m_get_volume_pct(uint8_t *vol)
 {
   uint8_t volume;
-  esp_err_t ret = TAS5766m_get_volume(&volume);
+  esp_err_t ret = tas5766m_get_volume(&volume);
   
   if (ret != ESP_OK)
   {
@@ -302,41 +302,41 @@ esp_err_t TAS5766m_get_volume_pct(uint8_t *vol)
   return ret;
 }
 
-esp_err_t TAS5766m_deinit(void)
+esp_err_t tas5766m_deinit(void)
 {
   gpio_set_level(TAS5766M_GPIO_PDN, 0);
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_get_mute(bool *enabled)
+esp_err_t tas5766m_get_mute(bool *enabled)
 {
-  *enabled = TAS5766m_state.is_muted;
+  *enabled = tas5766m_state.is_muted;
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_mute(bool enable)
+esp_err_t tas5766m_set_mute(bool enable)
 {
-  TAS5766m_state.is_muted = enable;
-  return TAS5766m_set_state(enable ? TAS5766M_CTRL_MUTE : TAS5766M_CTRL_PLAY);
+  tas5766m_state.is_muted = enable;
+  return tas5766m_set_state(enable ? TAS5766M_CTRL_MUTE : TAS5766M_CTRL_PLAY);
 }
 
-esp_err_t TAS5766m_get_state(TAS5766M_CTRL_STATE *state)
+esp_err_t tas5766m_get_state(TAS5766M_CTRL_STATE *state)
 {
-  *state = TAS5766m_state.state;
+  *state = tas5766m_state.state;
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_state(TAS5766M_CTRL_STATE state)
+esp_err_t tas5766m_set_state(TAS5766M_CTRL_STATE state)
 {
   ESP_LOGD(TAG, "%s: Setting state to %d", __func__, state);
-  TAS5766m_state.state = state;
-  return TAS5766m_write_byte(TAS5766M_DEVICE_CTRL_2, state);
+  tas5766m_state.state = state;
+  return tas5766m_write_byte(TAS5766M_DEVICE_CTRL_2, state);
 }
 
-esp_err_t TAS5766m_get_dac_mode(TAS5766M_DAC_MODE *mode)
+esp_err_t tas5766m_get_dac_mode(TAS5766M_DAC_MODE *mode)
 {
     uint8_t current_value;
-    esp_err_t err = TAS5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
+    esp_err_t err = tas5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
         return err;
@@ -351,13 +351,13 @@ esp_err_t TAS5766m_get_dac_mode(TAS5766M_DAC_MODE *mode)
     return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_dac_mode(TAS5766M_DAC_MODE mode)
+esp_err_t tas5766m_set_dac_mode(TAS5766M_DAC_MODE mode)
 {
     ESP_LOGD(TAG, "%s: Setting DAC mode to %d", __func__, mode);
 
     // Read the current value of the register
     uint8_t current_value;
-    esp_err_t err = TAS5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
+    esp_err_t err = tas5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
         return err;
@@ -371,7 +371,7 @@ esp_err_t TAS5766m_set_dac_mode(TAS5766M_DAC_MODE mode)
     }
 
     // Write the updated value back to the register
-    int ret = TAS5766m_write_byte(TAS5766M_DEVICE_CTRL_1, current_value);
+    int ret = tas5766m_write_byte(TAS5766M_DEVICE_CTRL_1, current_value);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
     }
@@ -379,10 +379,10 @@ esp_err_t TAS5766m_set_dac_mode(TAS5766M_DAC_MODE mode)
     return ret;
 }
 
-esp_err_t TAS5766m_get_eq(bool *enabled)
+esp_err_t tas5766m_get_eq(bool *enabled)
 {
   uint8_t value = 0;
-  esp_err_t err = TAS5766m_read_byte(TAS5766M_DSP_MISC, &value);
+  esp_err_t err = tas5766m_read_byte(TAS5766M_DSP_MISC, &value);
   if (err != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
@@ -398,19 +398,19 @@ esp_err_t TAS5766m_get_eq(bool *enabled)
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_eq(bool enable)
+esp_err_t tas5766m_set_eq(bool enable)
 {
   ESP_LOGD(TAG, "%s: Setting EQ to %d", __func__, enable);
-  return TAS5766m_write_byte(TAS5766M_DSP_MISC, enable ? TAS5766M_CTRL_EQ_ON : TAS5766M_CTRL_EQ_OFF);
+  return tas5766m_write_byte(TAS5766M_DSP_MISC, enable ? TAS5766M_CTRL_EQ_ON : TAS5766M_CTRL_EQ_OFF);
 }
 
-esp_err_t TAS5766m_get_eq_gain(int band, int *gain)
+esp_err_t tas5766m_get_eq_gain(int band, int *gain)
 {
-  *gain = TAS5766m_state.eq_gain[band];
+  *gain = tas5766m_state.eq_gain[band];
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_eq_gain(int band, int gain)
+esp_err_t tas5766m_set_eq_gain(int band, int gain)
 {
   if (band < 0 || band >= TAS5766M_EQ_BANDS)
   {
@@ -426,14 +426,14 @@ esp_err_t TAS5766m_set_eq_gain(int band, int gain)
 
   int current_page = 0; 
   int ret = ESP_OK;
-  ESP_LOGD(TAG, "%s: Setting EQ band %d (%d Hz) to gain %d", __func__, band, TAS5766m_eq_bands[band], gain);
+  ESP_LOGD(TAG, "%s: Setting EQ band %d (%d Hz) to gain %d", __func__, band, tas5766m_eq_bands[band], gain);
 
   int x = gain + TAS5766M_EQ_MAX_DB;                                 
   int y = band * TAS5766M_EQ_KOEF_PER_BAND * TAS5766M_EQ_REG_PER_KOEF; 
                                                                       
   for (int i = 0; i < TAS5766M_EQ_KOEF_PER_BAND * TAS5766M_EQ_REG_PER_KOEF; i++) 
   { 
-      const reg_sequence_eq *reg_value = &TAS5766m_eq_registers[x][y + i]; 
+      const reg_sequence_eq *reg_value = &tas5766m_eq_registers[x][y + i]; 
       if (reg_value == NULL) {                                        
           ESP_LOGW(TAG, "%s: NULL pointer encountered at row[%d]", __func__, y + i); 
           continue;                                                   
@@ -445,24 +445,24 @@ esp_err_t TAS5766m_set_eq_gain(int band, int gain)
       }                                                               
                                                                       
       ESP_LOGV(TAG, "+ %d: w 0x%x 0x%x", i, reg_value->offset, reg_value->value);
-      ret = ret | TAS5766m_write_byte(reg_value->offset, reg_value->value);
+      ret = ret | tas5766m_write_byte(reg_value->offset, reg_value->value);
       if (ret != ESP_OK) { 
           ESP_LOGE(TAG, "%s: Error writing to register 0x%x", __func__, reg_value->offset); 
       
       }          
   }   
   
-  TAS5766m_state.eq_gain[band] = gain;
+  tas5766m_state.eq_gain[band] = gain;
                                                                       
   TAS5766M_SET_BOOK_AND_PAGE(TAS5766M_REG_BOOK_CONTROL_PORT, TAS5766M_REG_PAGE_ZERO); 
   return ret;
 }
 
-esp_err_t TAS5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ *freq, TAS5766M_BD_FREQ *bd_freq)
+esp_err_t tas5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ *freq, TAS5766M_BD_FREQ *bd_freq)
 {
   // Read the current value of the register
   uint8_t current_value;
-  esp_err_t err = TAS5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
+  esp_err_t err = tas5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
   if (err != ESP_OK) {
       ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
       return err;
@@ -474,7 +474,7 @@ esp_err_t TAS5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ
   *freq = (current_value & 0b01110000);
 
   // Read the BD frequency
-  err = TAS5766m_read_byte(TAS5766M_ANA_CTRL, &current_value);
+  err = tas5766m_read_byte(TAS5766M_ANA_CTRL, &current_value);
   if (err != ESP_OK) {
       ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
       return err;
@@ -484,13 +484,13 @@ esp_err_t TAS5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ freq, TAS5766M_BD_FREQ bd_freq)
+esp_err_t tas5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ freq, TAS5766M_BD_FREQ bd_freq)
 {
   ESP_LOGD(TAG, "%s: Setting modulation to %d, FSW: %d, Class-D bandwidth control: %d", __func__, mode, freq, bd_freq);
 
   // Read the current value of the register
   uint8_t current_value;
-  esp_err_t err = TAS5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
+  esp_err_t err = tas5766m_read_byte(TAS5766M_DEVICE_CTRL_1, &current_value);
   if (err != ESP_OK) {
       ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(err));
       return err;
@@ -504,13 +504,13 @@ esp_err_t TAS5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ 
   current_value |= freq & 0b01110000;  // Set bits 4-6
   
   // Write the updated value back to the register
-  int ret = TAS5766m_write_byte(TAS5766M_DEVICE_CTRL_1, current_value);
+  int ret = tas5766m_write_byte(TAS5766M_DEVICE_CTRL_1, current_value);
   if (ret != ESP_OK) {
       ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
   } 
 
   // Set the BD frequency
-  ret = TAS5766m_write_byte(TAS5766M_ANA_CTRL, bd_freq);
+  ret = tas5766m_write_byte(TAS5766M_ANA_CTRL, bd_freq);
   if (ret != ESP_OK) {
       ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
   } 
@@ -518,10 +518,10 @@ esp_err_t TAS5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ 
   return ret;
 }
 
-esp_err_t TAS5766m_get_again(uint8_t *gain)
+esp_err_t tas5766m_get_again(uint8_t *gain)
 {
   int ret = ESP_OK;
-  ret = TAS5766m_read_byte(TAS5766M_AGAIN, gain);
+  ret = tas5766m_read_byte(TAS5766M_AGAIN, gain);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -529,7 +529,7 @@ esp_err_t TAS5766m_get_again(uint8_t *gain)
   return ret;
 }
 
-esp_err_t TAS5766m_set_again(uint8_t gain)
+esp_err_t tas5766m_set_again(uint8_t gain)
 {
   // Gain is inverted!
   if (gain < TAS5766M_MAX_GAIN || gain > TAS5766M_MIN_GAIN)
@@ -538,8 +538,8 @@ esp_err_t TAS5766m_set_again(uint8_t gain)
     return ESP_ERR_INVALID_ARG;
   }
 
-  uint8_t value = TAS5766m_again[gain];
-  int ret = TAS5766m_write_byte(TAS5766M_AGAIN, value);
+  uint8_t value = tas5766m_again[gain];
+  int ret = tas5766m_write_byte(TAS5766M_AGAIN, value);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -548,13 +548,13 @@ esp_err_t TAS5766m_set_again(uint8_t gain)
   return ret;
 }
 
-esp_err_t TAS5766m_get_mixer_mode(TAS5766M_MIXER_MODE *mode)
+esp_err_t tas5766m_get_mixer_mode(TAS5766M_MIXER_MODE *mode)
 {
-  *mode = TAS5766m_state.mixer_mode;
+  *mode = tas5766m_state.mixer_mode;
   return ESP_OK;
 }
 
-esp_err_t TAS5766m_set_mixer_mode(TAS5766M_MIXER_MODE mode)
+esp_err_t tas5766m_set_mixer_mode(TAS5766M_MIXER_MODE mode)
 {
   ESP_LOGD(TAG, "%s: Setting mixer mode to %d", __func__, mode);
   
@@ -604,40 +604,40 @@ esp_err_t TAS5766m_set_mixer_mode(TAS5766M_MIXER_MODE mode)
   }
     
   TAS5766M_SET_BOOK_AND_PAGE(TAS5766M_REG_BOOK_5, TAS5766M_REG_BOOK_5_MIXER_PAGE);
-  ret = TAS5766m_write_byte(TAS5766M_REG_LEFT_TO_LEFT_GAIN, mixer_l_to_l);
+  ret = tas5766m_write_byte(TAS5766M_REG_LEFT_TO_LEFT_GAIN, mixer_l_to_l);
   if (ret != 0) {
     ESP_LOGE(TAG, "Failed to write register %d: %d", TAS5766M_REG_LEFT_TO_LEFT_GAIN, ret);
     return ret;
   }
 
-  ret = TAS5766m_write_byte(TAS5766M_REG_RIGHT_TO_RIGHT_GAIN, mixer_r_to_r);
+  ret = tas5766m_write_byte(TAS5766M_REG_RIGHT_TO_RIGHT_GAIN, mixer_r_to_r);
   if (ret != 0) {
     ESP_LOGE(TAG, "Failed to write register %d: %d", TAS5766M_REG_RIGHT_TO_RIGHT_GAIN, ret);
     return ret;
   }
 
-  ret = TAS5766m_write_byte(TAS5766M_REG_LEFT_TO_RIGHT_GAIN, mixer_l_to_r);
+  ret = tas5766m_write_byte(TAS5766M_REG_LEFT_TO_RIGHT_GAIN, mixer_l_to_r);
   if (ret != 0) {
     ESP_LOGE(TAG, "Failed to write register %d: %d", TAS5766M_REG_LEFT_TO_RIGHT_GAIN, ret);
     return ret;
   }
 
-  ret = TAS5766m_write_byte(TAS5766M_REG_RIGHT_TO_LEFT_GAIN, mixer_r_to_l);
+  ret = tas5766m_write_byte(TAS5766M_REG_RIGHT_TO_LEFT_GAIN, mixer_r_to_l);
   if (ret != 0) {
     ESP_LOGE(TAG, "Failed to write register %d: %d", TAS5766M_REG_RIGHT_TO_LEFT_GAIN, ret);
     return ret;
   }
 
-  TAS5766m_state.mixer_mode = mode;
+  tas5766m_state.mixer_mode = mode;
   TAS5766M_SET_BOOK_AND_PAGE(TAS5766M_REG_BOOK_CONTROL_PORT, TAS5766M_REG_PAGE_ZERO); 
   return ret;
 }
 
 
-esp_err_t TAS5766m_get_fs_freq(TAS5766M_FS_FREQ *freq)
+esp_err_t tas5766m_get_fs_freq(TAS5766M_FS_FREQ *freq)
 {
   uint8_t reg_value;
-  int ret = TAS5766m_read_byte(TAS5766M_FS_MON, &reg_value);
+  int ret = tas5766m_read_byte(TAS5766M_FS_MON, &reg_value);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -647,10 +647,10 @@ esp_err_t TAS5766m_get_fs_freq(TAS5766M_FS_FREQ *freq)
   return ret;
 }
 
-esp_err_t TAS5766m_get_bck_ratio(uint8_t *ratio)
+esp_err_t tas5766m_get_bck_ratio(uint8_t *ratio)
 {
   uint8_t reg_value;
-  int ret = TAS5766m_read_byte(TAS5766M_BCK_MON, &reg_value);
+  int ret = tas5766m_read_byte(TAS5766M_BCK_MON, &reg_value);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -660,10 +660,10 @@ esp_err_t TAS5766m_get_bck_ratio(uint8_t *ratio)
   return ret;
 }
 
-esp_err_t TAS5766m_get_power_state(TAS5766M_CTRL_STATE *state)
+esp_err_t tas5766m_get_power_state(TAS5766M_CTRL_STATE *state)
 {
   uint8_t reg_value;
-  int ret = TAS5766m_read_byte(TAS5766M_POWER_STATE, &reg_value);
+  int ret = tas5766m_read_byte(TAS5766M_POWER_STATE, &reg_value);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -673,10 +673,10 @@ esp_err_t TAS5766m_get_power_state(TAS5766M_CTRL_STATE *state)
   return ret;
 }
 
-esp_err_t TAS5766m_get_automute_state(bool *is_r_muted, bool *is_l_muted)
+esp_err_t tas5766m_get_automute_state(bool *is_r_muted, bool *is_l_muted)
 {
   uint8_t reg_value;
-  int ret = TAS5766m_read_byte(TAS5766M_AUTOMUTE_STATE, &reg_value);
+  int ret = tas5766m_read_byte(TAS5766M_AUTOMUTE_STATE, &reg_value);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -687,10 +687,10 @@ esp_err_t TAS5766m_get_automute_state(bool *is_r_muted, bool *is_l_muted)
   return ret;
 }
 
-esp_err_t TAS5766m_clear_faults()
+esp_err_t tas5766m_clear_faults()
 {
   ESP_LOGD(TAG, "%s: Clearing faults", __func__);
-  int ret = TAS5766m_write_byte(TAS5766M_FAULT_CLEAR, TAS5766M_ANALOG_FAULT_CLEAR);
+  int ret = tas5766m_write_byte(TAS5766M_FAULT_CLEAR, TAS5766M_ANALOG_FAULT_CLEAR);
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -698,32 +698,32 @@ esp_err_t TAS5766m_clear_faults()
   return ret;
 }
 
-esp_err_t TAS5766m_get_faults(TAS5766M_FAULT *fault)
+esp_err_t tas5766m_get_faults(TAS5766M_FAULT *fault)
 {
   int ret = ESP_OK;
 
-  ret = TAS5766m_read_byte(TAS5766M_CHAN_FAULT, &(fault->err0));
+  ret = tas5766m_read_byte(TAS5766M_CHAN_FAULT, &(fault->err0));
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
     return ret;
   }
 
-  ret = TAS5766m_read_byte(TAS5766M_GLOBAL_FAULT1, &(fault->err1));
+  ret = tas5766m_read_byte(TAS5766M_GLOBAL_FAULT1, &(fault->err1));
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
     return ret;
   }
 
-  ret = TAS5766m_read_byte(TAS5766M_GLOBAL_FAULT2, &(fault->err2));
+  ret = tas5766m_read_byte(TAS5766M_GLOBAL_FAULT2, &(fault->err2));
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
     return ret;
   }
 
-  ret= TAS5766m_read_byte(TAS5766M_OT_WARNING, &(fault->ot_warn));
+  ret= tas5766m_read_byte(TAS5766M_OT_WARNING, &(fault->ot_warn));
   if (ret != ESP_OK)
   {
     ESP_LOGE(TAG, "%s: Error during I2C transmission: %s", __func__, esp_err_to_name(ret));
@@ -733,7 +733,7 @@ esp_err_t TAS5766m_get_faults(TAS5766M_FAULT *fault)
   return ret;
 }
 
-void TAS5766m_decode_faults(TAS5766M_FAULT fault)
+void tas5766m_decode_faults(TAS5766M_FAULT fault)
 {
   if (fault.err0) {
     if (fault.err0 & (1 << 0))  
@@ -777,7 +777,7 @@ void TAS5766m_decode_faults(TAS5766M_FAULT fault)
   }
 }
 
-const char *TAS5766m_map_fs_freq(TAS5766M_FS_FREQ freq)
+const char *tas5766m_map_fs_freq(TAS5766M_FS_FREQ freq)
 {
     switch (freq)
     {
@@ -800,7 +800,7 @@ const char *TAS5766m_map_fs_freq(TAS5766M_FS_FREQ freq)
     }
 }
 
-const char* TAS5766m_map_amp_state(TAS5766M_CTRL_STATE state)
+const char* tas5766m_map_amp_state(TAS5766M_CTRL_STATE state)
 {
     switch (state)
     {

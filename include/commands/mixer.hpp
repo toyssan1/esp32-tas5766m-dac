@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class MixerCommand: public Command
 {
@@ -71,7 +71,7 @@ private:
         if (mixer_args.action->count == 0)
         {
             TAS5766M_MIXER_MODE mode;
-            TAS5766m.getMixerMode(&mode);
+            Tas5766m.getMixerMode(&mode);
             ESP_LOGI(TAG, "Current mixer mode is %s", map_mixer_mode(mode));
             return 0;
         }
@@ -82,23 +82,23 @@ private:
         {
             case STEREO:
                 ESP_LOGI(TAG, "Mixer set to STEREO mode");
-                ESP_ERROR_CHECK(TAS5766m.setMixerMode(MIXER_STEREO));
+                ESP_ERROR_CHECK(Tas5766m.setMixerMode(MIXER_STEREO));
                 break;
             case INV:
                 ESP_LOGI(TAG, "Mixer set to STEREO_INVERSE mode");
-                ESP_ERROR_CHECK(TAS5766m.setMixerMode(MIXER_STEREO_INVERSE));
+                ESP_ERROR_CHECK(Tas5766m.setMixerMode(MIXER_STEREO_INVERSE));
                 break;
             case MONO:
                 ESP_LOGI(TAG, "Mixer set to MONO mode");
-                ESP_ERROR_CHECK(TAS5766m.setMixerMode(MIXER_MONO));
+                ESP_ERROR_CHECK(Tas5766m.setMixerMode(MIXER_MONO));
                 break;
             case LEFT:
                 ESP_LOGI(TAG, "Mixer set to LEFT mode");
-                ESP_ERROR_CHECK(TAS5766m.setMixerMode(MIXER_LEFT));
+                ESP_ERROR_CHECK(Tas5766m.setMixerMode(MIXER_LEFT));
                 break;
             case RIGHT:
                 ESP_LOGI(TAG, "Mixer set to RIGHT mode");
-                ESP_ERROR_CHECK(TAS5766m.setMixerMode(MIXER_RIGHT));
+                ESP_ERROR_CHECK(Tas5766m.setMixerMode(MIXER_RIGHT));
                 break;
 
             default:

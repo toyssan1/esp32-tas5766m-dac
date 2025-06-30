@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class EqCommand : public Command
 {
@@ -26,7 +26,7 @@ private:
         if (eq_args.action->count == 0)
         {
             bool eq_enabled;
-            TAS5766m.getEqEnabled(&eq_enabled);
+            Tas5766m.getEqEnabled(&eq_enabled);
             ESP_LOGI(TAG, "EQ enable state is %d", eq_enabled);
             return 0;
         }
@@ -36,12 +36,12 @@ private:
         if (strcmp(action, "on") == 0)
         {
             ESP_LOGI("CMD", "Enabling EQ");
-            TAS5766m.setEqEnabled(true);
+            Tas5766m.setEqEnabled(true);
         }
         else if (strcmp(action, "off") == 0)
         {
             ESP_LOGI("CMD", "Disabling EQ");
-            TAS5766m.setEqEnabled(false);
+            Tas5766m.setEqEnabled(false);
         }
         else if (strcmp(action, "get") == 0)
         {
@@ -60,9 +60,9 @@ private:
             }
 
             int gain;
-            TAS5766m.getEqGain(band, &gain);
+            Tas5766m.getEqGain(band, &gain);
 
-            ESP_LOGI("CMD", "EQ band %d (%d Hz) has gain %d", band, TAS5766m_eq_bands[band], gain);
+            ESP_LOGI("CMD", "EQ band %d (%d Hz) has gain %d", band, tas5766m_eq_bands[band], gain);
         }
         else if (strcmp(action, "set") == 0)
         {
@@ -88,7 +88,7 @@ private:
             }
 
             ESP_LOGI("CMD", "Setting EQ band %d to gain %d", band, gain);
-            TAS5766m.setEqGain(band, gain);
+            Tas5766m.setEqGain(band, gain);
         }
         else
         {

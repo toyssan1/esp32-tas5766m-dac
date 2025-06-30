@@ -23,7 +23,7 @@ This library provides an interface for controlling the TAS5766M digital-to-analo
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/esp32-TAS5766m-dac.git
+    git clone https://github.com/yourusername/esp32-tas5766m-dac.git
     ```
 
 2. Include the library in your project:
@@ -43,7 +43,7 @@ I've implemented a `tas5766m.hpp` wrapper, that I'm primarily using in the Ardui
 
 ```cpp
 #include <tas5766m.hpp>
-TAS5766m TAS5766m(&Wire);
+tas5766m Tas5766m(&Wire);
 ```
 
 ```cpp
@@ -51,7 +51,7 @@ const int sampleRate = 16000;
 const int bps = 16;
 I2S.begin(I2S_PHILIPS_MODE, sampleRate, bps);
 Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL);
-TAS5766m.init();
+Tas5766m.init();
 
 ```
 
@@ -61,13 +61,13 @@ With that disclaimer, here is what it does.
 
 ### Initialization
 
-To initialize the TAS5766M DAC, call the `TAS5766m_init` function:
+To initialize the TAS5766M DAC, call the `tas5766m_init` function:
 
 ```cpp
 #include "tas5766m.h"
 
 void app_main() {
-    esp_err_t ret = TAS5766m_init();
+    esp_err_t ret = tas5766m_init();
     if (ret != ESP_OK) {
         ESP_LOGE("TAS5766M", "Failed to initialize TAS5766M");
     }
@@ -130,21 +130,21 @@ Having the analog gain set at the appropriate level, the digital volume should b
 
 There are two ways volume can be changed. The traditional way is to use a 0-100% range, where 0 means mute, 100% means 0 dB gain or full output swing (rail-to-rail voltage). In the case of TAS5766M DAc, it allows for gains up to +24 dB, which might be used with lower amplitude audio, but will cause distortions normally. That's why the function would accept values up to 124, but keep in mind that only values up to 100 are guaranteed not to cause clipping.
 
-To set the volume, use the `TAS5766m_set_volume_pct` function (volume is in the range [TAS5766M_VOLUME_PCT_MIN..TAS5766M_VOLUME_PCT_MAX], default is `TAS5766M_VOLUME_PCT_DEFAULT`
+To set the volume, use the `tas5766m_set_volume_pct` function (volume is in the range [TAS5766M_VOLUME_PCT_MIN..TAS5766M_VOLUME_PCT_MAX], default is `TAS5766M_VOLUME_PCT_DEFAULT`
 
 ```cpp
 uint8_t volume = 75; // Volume level (0-124)
-esp_err_t ret = TAS5766m_set_volume_pct(volume);
+esp_err_t ret = tas5766m_set_volume_pct(volume);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set volume");
 }
 ```
 
-To get the current volume, use the `TAS5766m_get_volume_pct` function:
+To get the current volume, use the `tas5766m_get_volume_pct` function:
 
 ```cpp
 uint8_t volume;
-esp_err_t ret = TAS5766m_get_volume_pct(&volume);
+esp_err_t ret = tas5766m_get_volume_pct(&volume);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get volume");
 } else {
@@ -152,21 +152,21 @@ if (ret != ESP_OK) {
 }
 ```
 
-The second way to change the volume is to use DAC native scale, which is [0..255] where 0 is +24 dB gain (that's loud!), and 255 is mute. To set the volume this way, use the `TAS5766m_set_volume` function (volume is in the range [TAS5766M_VOLUME_MIN..TAS5766M_VOLUME_MAX], default is `TAS5766M_VOLUME_DEFAULT = 48`, which is +0 Db):
+The second way to change the volume is to use DAC native scale, which is [0..255] where 0 is +24 dB gain (that's loud!), and 255 is mute. To set the volume this way, use the `tas5766m_set_volume` function (volume is in the range [TAS5766M_VOLUME_MIN..TAS5766M_VOLUME_MAX], default is `TAS5766M_VOLUME_DEFAULT = 48`, which is +0 Db):
 
 ```cpp
 uint8_t volume = 80; // Volume level (0-255)
-esp_err_t ret = TAS5766m_set_volume(volume);
+esp_err_t ret = tas5766m_set_volume(volume);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set volume");
 }
 ```
 
-To get the current volume, use the `TAS5766m_get_volume` function:
+To get the current volume, use the `tas5766m_get_volume` function:
 
 ```cpp
 uint8_t volume;
-esp_err_t ret = TAS5766m_get_volume(&volume);
+esp_err_t ret = tas5766m_get_volume(&volume);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get volume");
 } else {
@@ -175,21 +175,21 @@ if (ret != ESP_OK) {
 ```
 ### Setting and Getting Analog Gain
 
-To set the analog gain, use the `TAS5766m_set_again` function (value in the inverted scale [TAS5766M_MAX_GAIN..TAS5766M_MIN_GAIN], which is [0..31], representing 0.5 dB steps from 0 dB to -15.5 dB, default is 0):
+To set the analog gain, use the `tas5766m_set_again` function (value in the inverted scale [TAS5766M_MAX_GAIN..TAS5766M_MIN_GAIN], which is [0..31], representing 0.5 dB steps from 0 dB to -15.5 dB, default is 0):
 
 ```cpp
 uint8_t gain = 10; // Gain level of -5 Db
-esp_err_t ret = TAS5766m_set_again(gain);
+esp_err_t ret = tas5766m_set_again(gain);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set analog gain");
 }
 ```
 
-To get the current analog gain, use the `TAS5766m_get_again` function:
+To get the current analog gain, use the `tas5766m_get_again` function:
 
 ```cpp
 uint8_t gain;
-esp_err_t ret = TAS5766m_get_again(&gain);
+esp_err_t ret = tas5766m_get_again(&gain);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get analog gain");
 } else {
@@ -213,25 +213,25 @@ The default is PLAY state, and it will keep in PLAY forever unless specifically 
 
 ### Setting and Getting Power State
 
-To set the power state, use the `TAS5766m_set_state` function:
+To set the power state, use the `tas5766m_set_state` function:
 
 ```cpp
 TAS5766M_CTRL_STATE state = TAS5766M_CTRL_SLEEP;
-esp_err_t ret = TAS5766m_set_state(state);
+esp_err_t ret = tas5766m_set_state(state);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set power state");
 }
 ```
 
-To get the current power state, use the `TAS5766m_get_state` function:
+To get the current power state, use the `tas5766m_get_state` function:
 
 ```cpp
 TAS5766M_CTRL_STATE state;
-esp_err_t ret = TAS5766m_get_state(&state);
+esp_err_t ret = tas5766m_get_state(&state);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get power state");
 } else {
-    ESP_LOGI("TAS5766M", "Current power state: %s", TAS5766m_map_amp_state(state));
+    ESP_LOGI("TAS5766M", "Current power state: %s", tas5766m_map_amp_state(state));
 }
 ```
 
@@ -239,21 +239,21 @@ if (ret != ESP_OK) {
 
 Mute is a special case of a power state, but since it will be typically used to shut down the amp when idling, I exposed it 
 
-To set the mute state, use the `TAS5766m_set_mute` function:
+To set the mute state, use the `tas5766m_set_mute` function:
 
 ```cpp
 bool mute = true; // Mute the DAC
-esp_err_t ret = TAS5766m_set_mute(mute);
+esp_err_t ret = tas5766m_set_mute(mute);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set mute state");
 }
 ```
 
-To get the current mute state, use the `TAS5766m_get_mute` function:
+To get the current mute state, use the `tas5766m_get_mute` function:
 
 ```cpp
 bool mute;
-esp_err_t ret = TAS5766m_get_mute(&mute);
+esp_err_t ret = tas5766m_get_mute(&mute);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get mute state");
 } else {
@@ -273,21 +273,21 @@ TAS5766M has a bridge mode of operation, that causes both output drivers to sync
 | Speaker Connection | ![image](https://github.com/user-attachments/assets/8e5e9c38-2696-419b-9c5b-d278c655b0db) | ![image](https://github.com/user-attachments/assets/8aba6273-84c4-45a8-9808-93317d794a44)
 
 
-To set the DAC mode, use the `TAS5766m_set_dac_mode` function:
+To set the DAC mode, use the `tas5766m_set_dac_mode` function:
 
 ```cpp
 TAS5766M_DAC_MODE mode = TAS5766M_DAC_MODE_BTL; // Set to Bridge Tied Load mode
-esp_err_t ret = TAS5766m_set_dac_mode(mode);
+esp_err_t ret = tas5766m_set_dac_mode(mode);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set DAC mode");
 }
 ```
 
-To get the current DAC mode, use the `TAS5766m_get_dac_mode` function:
+To get the current DAC mode, use the `tas5766m_get_dac_mode` function:
 
 ```cpp
 TAS5766M_DAC_MODE mode;
-esp_err_t ret = TAS5766m_get_dac_mode(&mode);
+esp_err_t ret = tas5766m_get_dac_mode(&mode);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get DAC mode");
 } else {
@@ -327,21 +327,21 @@ Here are a few examples of different configurations that can be created with the
 
 ### Setting and Getting EQ State and Gain
 
-To set the EQ state, use the `TAS5766m_set_eq` function:
+To set the EQ state, use the `tas5766m_set_eq` function:
 
 ```cpp
 bool eq_enabled = true; // Enable EQ
-esp_err_t ret = TAS5766m_set_eq(eq_enabled);
+esp_err_t ret = tas5766m_set_eq(eq_enabled);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set EQ state");
 }
 ```
 
-To get the current EQ state, use the `TAS5766m_get_eq` function:
+To get the current EQ state, use the `tas5766m_get_eq` function:
 
 ```cpp
 bool eq_enabled;
-esp_err_t ret = TAS5766m_get_eq(&eq_enabled);
+esp_err_t ret = tas5766m_get_eq(&eq_enabled);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get EQ state");
 } else {
@@ -349,23 +349,23 @@ if (ret != ESP_OK) {
 }
 ```
 
-To set the EQ gain, use the `TAS5766m_set_eq_gain` function:
+To set the EQ gain, use the `tas5766m_set_eq_gain` function:
 
 ```cpp
 int band = 1; // EQ band
 int gain = 5; // Gain level
-esp_err_t ret = TAS5766m_set_eq_gain(band, gain);
+esp_err_t ret = tas5766m_set_eq_gain(band, gain);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set EQ gain");
 }
 ```
 
-To get the current EQ gain, use the `TAS5766m_get_eq_gain` function:
+To get the current EQ gain, use the `tas5766m_get_eq_gain` function:
 
 ```cpp
 int band = 1; // EQ band
 int gain;
-esp_err_t ret = TAS5766m_get_eq_gain(band, &gain);
+esp_err_t ret = tas5766m_get_eq_gain(band, &gain);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get EQ gain");
 } else {
@@ -419,25 +419,25 @@ TAS5766M supports different switching frequencies, which mostly affect the balan
 
 ### Setting and Getting Modulation Mode
 
-To set the modulation mode, use the `TAS5766m_set_modulation_mode` function:
+To set the modulation mode, use the `tas5766m_set_modulation_mode` function:
 
 ```cpp
 TAS5766M_MOD_MODE mode = MOD_MODE_BD;
 TAS5766M_SW_FREQ freq = SW_FREQ_768K;
 TAS5766M_BD_FREQ bd_freq = SW_FREQ_80K;
-esp_err_t ret = TAS5766m_set_modulation_mode(mode, freq, bd_freq);
+esp_err_t ret = tas5766m_set_modulation_mode(mode, freq, bd_freq);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set modulation mode");
 }
 ```
 
-To get the current modulation mode, use the `TAS5766m_get_modulation_mode` function:
+To get the current modulation mode, use the `tas5766m_get_modulation_mode` function:
 
 ```cpp
 TAS5766M_MOD_MODE mode;
 TAS5766M_SW_FREQ freq;
 TAS5766M_BD_FREQ bd_freq;
-esp_err_t ret = TAS5766m_get_modulation_mode(&mode, &freq, &bd_freq);
+esp_err_t ret = tas5766m_get_modulation_mode(&mode, &freq, &bd_freq);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get modulation mode");
 } else {
@@ -460,21 +460,21 @@ Of course, you can decide to use a single channel or a mix of two, just keep in 
 
 ### Setting and Getting Mixer Mode
 
-To set the mixer mode, use the `TAS5766m_set_mixer_mode` function:
+To set the mixer mode, use the `tas5766m_set_mixer_mode` function:
 
 ```cpp
 TAS5766M_MIXER_MODE mode = MIXER_STEREO;
-esp_err_t ret = TAS5766m_set_mixer_mode(mode);
+esp_err_t ret = tas5766m_set_mixer_mode(mode);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to set mixer mode");
 }
 ```
 
-To get the current mixer mode, use the `TAS5766m_get_mixer_mode` function:
+To get the current mixer mode, use the `tas5766m_get_mixer_mode` function:
 
 ```cpp
 TAS5766M_MIXER_MODE mode;
-esp_err_t ret = TAS5766m_get_mixer_mode(&mode);
+esp_err_t ret = tas5766m_get_mixer_mode(&mode);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get mixer mode");
 } else {
@@ -488,11 +488,11 @@ if (ret != ESP_OK) {
 
 The DAC should auto-detect the sample rate and BCK clock frequency. I added these functions purely for debugging issues (in case you switch them for any reason).
 
-To get the current sample rate, use the `TAS5766m_get_fs_freq` function:
+To get the current sample rate, use the `tas5766m_get_fs_freq` function:
 
 ```cpp
 TAS5766M_FS_FREQ freq;
-esp_err_t ret = TAS5766m_get_fs_freq(&freq);
+esp_err_t ret = tas5766m_get_fs_freq(&freq);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get sample rate");
 } else {
@@ -500,11 +500,11 @@ if (ret != ESP_OK) {
 }
 ```
 
-To get the BCK ratio, use the `TAS5766m_get_bck_ratio` function:
+To get the BCK ratio, use the `tas5766m_get_bck_ratio` function:
 
 ```cpp
 uint8_t ratio;
-esp_err_t ret = TAS5766m_get_bck_ratio(&ratio);
+esp_err_t ret = tas5766m_get_bck_ratio(&ratio);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get BCK ratio");
 } else {
@@ -514,13 +514,13 @@ if (ret != ESP_OK) {
 
 ### Getting Power State and Automute State
 
-Power state pretty much represents the value from the `TAS5766m_get_state` function, but it is read directly from the DAC register, so it would be a more precise state (affected by power glitches, auto-shutdown, fault, or any other reason)
+Power state pretty much represents the value from the `tas5766m_get_state` function, but it is read directly from the DAC register, so it would be a more precise state (affected by power glitches, auto-shutdown, fault, or any other reason)
 
-To get the power state, use the `TAS5766m_get_power_state` function:
+To get the power state, use the `tas5766m_get_power_state` function:
 
 ```cpp
 TAS5766M_CTRL_STATE state;
-esp_err_t ret = TAS5766m_get_power_state(&state);
+esp_err_t ret = tas5766m_get_power_state(&state);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get power state");
 } else {
@@ -529,11 +529,11 @@ if (ret != ESP_OK) {
 ```
 DAC will auto-mute channels individually when no input signal is detected. This will give direct access to mute states per channel.
 
-To get the automute state, use the `TAS5766m_get_automute_state` function:
+To get the automute state, use the `tas5766m_get_automute_state` function:
 
 ```cpp
 bool is_r_muted, is_l_muted;
-esp_err_t ret = TAS5766m_get_automute_state(&is_r_muted, &is_l_muted);
+esp_err_t ret = tas5766m_get_automute_state(&is_r_muted, &is_l_muted);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get automute state");
 } else {
@@ -552,38 +552,38 @@ static void checkFaults()
 {
     TAS5766M_FS_FREQ freq;
     uint8_t ratio;
-    TAS5766m.getFsFreq(&freq);
-    TAS5766m.getBckRatio(&ratio);
+    Tas5766m.getFsFreq(&freq);
+    Tas5766m.getBckRatio(&ratio);
     
     TAS5766M_CTRL_STATE state;
-    TAS5766m.getPowerState(&state);
+    Tas5766m.getPowerState(&state);
     
     bool is_r_muted, is_l_muted;
-    TAS5766m.getAutomuteState(&is_r_muted, &is_l_muted);
+    Tas5766m.getAutomuteState(&is_r_muted, &is_l_muted);
     
     ESP_LOGI(TAG, "FS Frequency: %s, BCK ratio: %d; Power state: %s; Automute: R: %d, L: %d", 
-        TAS5766m_map_fs_freq(freq), ratio, 
-        TAS5766m_map_amp_state(state), 
+        tas5766m_map_fs_freq(freq), ratio, 
+        tas5766m_map_amp_state(state), 
         is_r_muted, is_l_muted
     );
     
     TAS5766M_FAULT fault;
-    TAS5766m.getFaultState(&fault);
-    TAS5766m.decodeFaults(fault);
+    Tas5766m.getFaultState(&fault);
+    Tas5766m.decodeFaults(fault);
 
     if (fault.err0 || fault.err1 || fault.err2 || fault.ot_warn)
     {
         ESP_LOGI(TAG, "Clearing fault states");
-        TAS5766m.clearFaultState();
+        Tas5766m.clearFaultState();
     }
 }
 ```
 
-To get the fault states, use the `TAS5766m_get_faults` function:
+To get the fault states, use the `tas5766m_get_faults` function:
 
 ```cpp
 TAS5766M_FAULT fault;
-esp_err_t ret = TAS5766m_get_faults(&fault);
+esp_err_t ret = tas5766m_get_faults(&fault);
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to get fault states");
 } else {
@@ -591,10 +591,10 @@ if (ret != ESP_OK) {
 }
 ```
 
-To clear the fault states, use the `TAS5766m_clear_faults` function:
+To clear the fault states, use the `tas5766m_clear_faults` function:
 
 ```cpp
-esp_err_t ret = TAS5766m_clear_faults();
+esp_err_t ret = tas5766m_clear_faults();
 if (ret != ESP_OK) {
     ESP_LOGE("TAS5766M", "Failed to clear fault states");
 }
@@ -602,11 +602,11 @@ if (ret != ESP_OK) {
 
 ### Decoding Fault Errors
 
-To decode fault errors, use the `TAS5766m_decode_faults` function:
+To decode fault errors, use the `tas5766m_decode_faults` function:
 
 ```cpp
 TAS5766M_FAULT fault = { .err0 = 1, .err1 = 0, .err2 = 0, .ot_warn = 1 };
-TAS5766m_decode_faults(fault);
+tas5766m_decode_faults(fault);
 ```
 
 ## To Do
@@ -628,8 +628,8 @@ Contributions are welcome! Please open an issue or submit a pull request on GitH
 
 ## Acknowledgements
 
-This library is based on the ESP-IDF framework and the TAS5766M DAC documentation. I also used some part of the [Linux Kernel implementation](https://github.com/torvalds/linux/blob/master/sound/soc/codecs/TAS5766m.c) of the driver, and also [my own implementation](https://github.com/sonocotta/TAS5766m-driver-for-raspbian)
+This library is based on the ESP-IDF framework and the TAS5766M DAC documentation. I also used some part of the [Linux Kernel implementation](https://github.com/torvalds/linux/blob/master/sound/soc/codecs/tas5766m.c) of the driver, and also [my own implementation](https://github.com/sonocotta/tas5766m-driver-for-raspbian)
 
-- [TAS5766M Datasheet](https://www.ti.com/lit/ds/symlink/TAS5766m.pdf)
+- [TAS5766M Datasheet](https://www.ti.com/lit/ds/symlink/tas5766m.pdf)
 - [TAS5766M Process Flows](https://www.ti.com/lit/an/sloa263a/sloa263a.pdf)
 - [TAS5766M Tuning Guide](https://www.ti.com/lit/an/slaa894/slaa894.pdf)

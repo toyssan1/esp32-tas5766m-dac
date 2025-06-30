@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class GainCommand : public Command
 {
@@ -33,7 +33,7 @@ private:
         if (gain_args.gain->count == 0)
         {
             uint8_t gain;
-            TAS5766m.getAnalogGain(&gain);
+            Tas5766m.getAnalogGain(&gain);
             ESP_LOGI(TAG, "Current gain index is %d, which is %f Db", gain, gain_to_db(gain));
             return 0;
         }
@@ -46,7 +46,7 @@ private:
         }
 
         ESP_LOGI(TAG, "Setting gain to %d, which is %f Db", gain_ix, gain_to_db(gain_ix)); 
-        TAS5766m.setAnalogGain(gain_ix);
+        Tas5766m.setAnalogGain(gain_ix);
         return 0;
     }
 

@@ -27,7 +27,7 @@ extern "C"
     *     - ESP_OK
     *     - ESP_FAIL
     */
-   esp_err_t TAS5766m_adf_init();
+   esp_err_t tas5766m_adf_init();
 
    /**
     * @brief Deinitialize TAS5766 codec chip
@@ -36,7 +36,7 @@ extern "C"
     *     - ESP_OK
     *     - ESP_FAIL
     */
-   esp_err_t TAS5766m_adf_deinit(void);
+   esp_err_t tas5766m_adf_deinit(void);
 
    /**
     * @brief  Set voice volume
@@ -47,7 +47,7 @@ extern "C"
     *     - ESP_OK
     *     - ESP_FAIL
     */
-   esp_err_t TAS5766m_adf_set_volume(int vol);
+   esp_err_t tas5766m_adf_set_volume(int vol);
    
    /**
     * @brief Get voice volume
@@ -58,12 +58,12 @@ extern "C"
     *     - ESP_OK
     *     - ESP_FAIL
     */
-   esp_err_t TAS5766m_adf_get_volume(int *vol);
+   esp_err_t tas5766m_adf_get_volume(int *vol);
 
    /**
     * @brief Set TAS5766 mute or not
     *        Continuously call should have an interval time determined by
-    * TAS5766m_adf_set_mute_fade()
+    * tas5766m_adf_set_mute_fade()
     *
     * @param enable enable(1) or disable(0)
     *
@@ -71,7 +71,7 @@ extern "C"
     *     - ESP_FAIL Parameter error
     *     - ESP_OK   Success
     */
-   esp_err_t TAS5766m_adf_set_mute(bool enable);
+   esp_err_t tas5766m_adf_set_mute(bool enable);
 
    /**
     * @brief Get TAS5766 mute status
@@ -80,7 +80,7 @@ extern "C"
     *     - ESP_FAIL Parameter error
     *     - ESP_OK   Success
     */
-   esp_err_t TAS5766m_adf_get_mute(bool *enabled);
+   esp_err_t tas5766m_adf_get_mute(bool *enabled);
    
    /**
     * @brief Set the state of the TAS5766M
@@ -91,10 +91,10 @@ extern "C"
     *     - ESP_OK
     *     - ESP_FAIL
     */
-   esp_err_t TAS5766m_adf_ctrl(audio_hal_codec_mode_t mode,
+   esp_err_t tas5766m_adf_ctrl(audio_hal_codec_mode_t mode,
       audio_hal_ctrl_t ctrl_state);
       
-   esp_err_t TAS5766m_adf_config_iface(audio_hal_codec_mode_t mode,
+   esp_err_t tas5766m_adf_config_iface(audio_hal_codec_mode_t mode,
          audio_hal_codec_i2s_iface_t *iface);
 
 #ifdef __cplusplus

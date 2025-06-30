@@ -92,7 +92,7 @@ typedef struct {
 // Analog gain
 #define TAS5766M_MAX_GAIN 0
 #define TAS5766M_MIN_GAIN 31
-static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
+static const uint8_t tas5766m_again[TAS5766M_MIN_GAIN + 1] = {
     0x00, /* 0dB */ 
     0x01, /* -0.5Db */
     0x02, /* -1.0dB */
@@ -145,7 +145,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_init();
+    esp_err_t tas5766m_init();
     /**
      * @brief Deinitialize TAS5766 codec chip
      *
@@ -153,7 +153,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_deinit(void);
+    esp_err_t tas5766m_deinit(void);
 
     /**
      * @brief  Set device volume
@@ -164,7 +164,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_set_volume(uint8_t vol);
+    esp_err_t tas5766m_set_volume(uint8_t vol);
 
     /**
      * @brief Get device volume
@@ -175,7 +175,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_volume(uint8_t *vol);
+    esp_err_t tas5766m_get_volume(uint8_t *vol);
     
     /**
      * @brief  Set device volume (0..100%)
@@ -186,7 +186,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_set_volume_pct(uint8_t vol);
+    esp_err_t tas5766m_set_volume_pct(uint8_t vol);
 
     /**
      * @brief Get device volume (0..100%)
@@ -197,13 +197,13 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_volume_pct(uint8_t *vol);
+    esp_err_t tas5766m_get_volume_pct(uint8_t *vol);
 
 
     /**
      * @brief Set TAS5766 mute or not
      *        Continuously call should have an interval time determined by
-     * TAS5766m_set_mute_fade()
+     * tas5766m_set_mute_fade()
      *
      * @param enable enable(1) or disable(0)
      *
@@ -211,7 +211,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_FAIL Parameter error
      *     - ESP_OK   Success
      */
-    esp_err_t TAS5766m_set_mute(bool enable);
+    esp_err_t tas5766m_set_mute(bool enable);
 
     /**
      * @brief Mute TAS5766M
@@ -230,14 +230,14 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_FAIL Parameter error
      *     - ESP_OK   Success
      */
-    esp_err_t TAS5766m_get_mute(bool *enabled);
+    esp_err_t tas5766m_get_mute(bool *enabled);
 
     // do nothing
-    // esp_err_t TAS5766m_ctrl(audio_hal_codec_mode_t mode,
+    // esp_err_t tas5766m_ctrl(audio_hal_codec_mode_t mode,
     //                         audio_hal_ctrl_t ctrl_state);
 
     // // do nothing
-    // esp_err_t TAS5766m_config_iface(audio_hal_codec_mode_t mode,
+    // esp_err_t tas5766m_config_iface(audio_hal_codec_mode_t mode,
     //                                 audio_hal_codec_i2s_iface_t *iface);
 
     /** 
@@ -246,7 +246,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param state: Pointer to the state variable
      * 
     */
-    esp_err_t TAS5766m_get_state(TAS5766M_CTRL_STATE *state);
+    esp_err_t tas5766m_get_state(TAS5766M_CTRL_STATE *state);
 
     /** 
      * @brief Set the state of the TAS5766M
@@ -254,7 +254,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param state: The state to set
      * 
     */
-    esp_err_t TAS5766m_set_state(TAS5766M_CTRL_STATE state);
+    esp_err_t tas5766m_set_state(TAS5766M_CTRL_STATE state);
 
     /** 
      * @brief Get the current DAC mode of the TAS5766M
@@ -262,7 +262,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param mode: Pointer to the mode variable
      * 
     */
-    esp_err_t TAS5766m_get_dac_mode(TAS5766M_DAC_MODE *mode);
+    esp_err_t tas5766m_get_dac_mode(TAS5766M_DAC_MODE *mode);
 
     /** 
      * @brief Set the DAC mode of the TAS5766M
@@ -270,7 +270,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param mode: The mode to set
      * 
     */
-    esp_err_t TAS5766m_set_dac_mode(TAS5766M_DAC_MODE mode);
+    esp_err_t tas5766m_set_dac_mode(TAS5766M_DAC_MODE mode);
 
     /** 
      * @brief Get the current EQ state of the TAS5766M
@@ -278,7 +278,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param enabled: Pointer to the enabled variable
      * 
     */
-    esp_err_t TAS5766m_get_eq(bool *enabled);
+    esp_err_t tas5766m_get_eq(bool *enabled);
 
     /** 
      * @brief Set the EQ state of the TAS5766M
@@ -286,7 +286,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param enable: The state to set
      * 
     */
-    esp_err_t TAS5766m_set_eq(bool enable);
+    esp_err_t tas5766m_set_eq(bool enable);
 
     /** 
      * @brief Get the current EQ gain of the TAS5766M
@@ -295,7 +295,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param gain: Pointer to the gain variable
      * 
     */
-    esp_err_t TAS5766m_get_eq_gain(int band, int *gain);
+    esp_err_t tas5766m_get_eq_gain(int band, int *gain);
 
     /** 
      * @brief Set the EQ gain of the TAS5766M
@@ -304,7 +304,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param gain: The gain to set
      * 
     */
-    esp_err_t TAS5766m_set_eq_gain(int band, int gain);
+    esp_err_t tas5766m_set_eq_gain(int band, int gain);
 
     /**
      * @brief Get the current modulation mode of the TAS5766M
@@ -317,7 +317,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ *freq, TAS5766M_BD_FREQ *bd_freq);
+    esp_err_t tas5766m_get_modulation_mode(TAS5766M_MOD_MODE *mode, TAS5766M_SW_FREQ *freq, TAS5766M_BD_FREQ *bd_freq);
 
     /**
      * @brief Set the modulation mode of the TAS5766M
@@ -330,7 +330,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ freq, TAS5766M_BD_FREQ bd_freq);
+    esp_err_t tas5766m_set_modulation_mode(TAS5766M_MOD_MODE mode, TAS5766M_SW_FREQ freq, TAS5766M_BD_FREQ bd_freq);
 
     /**
      * @brief Get the analog gain of the TAS5766M
@@ -341,7 +341,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_again(uint8_t *gain);
+    esp_err_t tas5766m_get_again(uint8_t *gain);
 
     /**
      * @brief Set the analog gain of the TAS5766M
@@ -352,7 +352,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_set_again(uint8_t gain);
+    esp_err_t tas5766m_set_again(uint8_t gain);
 
     /**
      * @brief Get the mixer mode of the TAS5766M
@@ -363,7 +363,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_mixer_mode(TAS5766M_MIXER_MODE *mode);
+    esp_err_t tas5766m_get_mixer_mode(TAS5766M_MIXER_MODE *mode);
 
     /**
      * @brief Set the mixer mode of the TAS5766M
@@ -374,7 +374,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_set_mixer_mode(TAS5766M_MIXER_MODE mode);
+    esp_err_t tas5766m_set_mixer_mode(TAS5766M_MIXER_MODE mode);
 
     /**
      * @brief Get the sample rate of the TAS5766M
@@ -385,7 +385,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_fs_freq(TAS5766M_FS_FREQ *freq);
+    esp_err_t tas5766m_get_fs_freq(TAS5766M_FS_FREQ *freq);
 
     /**
      * @brief Get the BCK ratio of the TAS5766M
@@ -396,7 +396,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_bck_ratio(uint8_t *ratio);
+    esp_err_t tas5766m_get_bck_ratio(uint8_t *ratio);
 
 
     /**
@@ -408,7 +408,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_power_state(TAS5766M_CTRL_STATE *state);
+    esp_err_t tas5766m_get_power_state(TAS5766M_CTRL_STATE *state);
 
     /**
      * @brief Get the automute flags of the TAS5766M
@@ -420,7 +420,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_automute_state(bool *is_r_muted, bool *is_l_muted);
+    esp_err_t tas5766m_get_automute_state(bool *is_r_muted, bool *is_l_muted);
 
     /**
      * @brief Get the faults of the TAS5766M
@@ -431,7 +431,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_get_faults(TAS5766M_FAULT* fault);
+    esp_err_t tas5766m_get_faults(TAS5766M_FAULT* fault);
     
     /**
      * @brief Clear the faults of the TAS5766M
@@ -440,7 +440,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      *     - ESP_OK
      *     - ESP_FAIL
      */
-    esp_err_t TAS5766m_clear_faults();
+    esp_err_t tas5766m_clear_faults();
 
     /**
      * @brief Decode the errors from the TAS5766M
@@ -448,7 +448,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * @param fault: The fault struct to decode
      * 
      */
-    void TAS5766m_decode_faults(TAS5766M_FAULT fault);
+    void tas5766m_decode_faults(TAS5766M_FAULT fault);
 
     
     /**
@@ -458,7 +458,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * 
      * @return The string representation of the state
      */
-    const char* TAS5766m_map_amp_state(TAS5766M_CTRL_STATE state);
+    const char* tas5766m_map_amp_state(TAS5766M_CTRL_STATE state);
 
     /**
      * @brief Map the TAS5766M_DAC_MODE to a string
@@ -467,7 +467,7 @@ static const uint8_t TAS5766m_again[TAS5766M_MIN_GAIN + 1] = {
      * 
      * @return The string representation of the mode
      */
-    const char* TAS5766m_map_fs_freq(TAS5766M_FS_FREQ freq);
+    const char* tas5766m_map_fs_freq(TAS5766M_FS_FREQ freq);
 
 
 #ifdef __cplusplus  

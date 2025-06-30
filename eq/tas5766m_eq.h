@@ -27,11 +27,11 @@ typedef struct {
 #define TAS5766M_REG_BOOK_EQ 0xaa
 
 // Frquency bands
-static const int TAS5766m_eq_bands[TAS5766M_EQ_BANDS] = {
+static const int tas5766m_eq_bands[TAS5766M_EQ_BANDS] = {
     20, 32, 50, 80, 125, 200, 315, 500, 800, 1250, 2000, 3150, 5000, 8000, 16000
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_mf[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_mf[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -15dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfc },
     { 0x24, 0x1a, 0xe8 },
@@ -334,7 +334,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_mf[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0xef },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_me[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_me[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -14dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfd },
     { 0x24, 0x1a, 0x50 },
@@ -637,7 +637,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_me[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x6e },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_md[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_md[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -13dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfd },
     { 0x24, 0x1a, 0xae },
@@ -940,7 +940,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_md[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x74 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_mc[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_mc[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -12dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfe },
     { 0x24, 0x1a, 0x01 },
@@ -1243,7 +1243,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_mc[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x2f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_mb[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_mb[TAS5766M_EQ_REG_PER_STEP] = {
 
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -11dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfe },
@@ -1547,7 +1547,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_mb[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0xa5 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_ma[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_ma[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -10dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfe },
     { 0x24, 0x1a, 0x8d },
@@ -1850,7 +1850,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_ma[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x35 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m9[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m9[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -9dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfe },
     { 0x24, 0x1a, 0xc8 },
@@ -2153,7 +2153,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m9[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x06 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m8[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m8[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -8dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xfe },
     { 0x24, 0x1a, 0xfc },
@@ -2456,7 +2456,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m8[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x34 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m7[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m7[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -7dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0x2b },
@@ -2759,7 +2759,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m7[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x8f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m6[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m6[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -6dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0x55 },
@@ -3062,7 +3062,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m6[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0xd3 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m5[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m5[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -5dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0x7a },
@@ -3365,7 +3365,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m5[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x1b },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m4[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m4[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -4dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0x9b },
@@ -3668,7 +3668,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m4[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x7b },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m3[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m3[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -3dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0xb9 },
@@ -3971,7 +3971,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m3[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0xa9 },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m2[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m2[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -2dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0xd3 },
@@ -4274,7 +4274,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m2[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0xaa },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_m1[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_m1[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x07 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: -1dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0xff },
     { 0x24, 0x1a, 0xeb },
@@ -4577,7 +4577,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_m1[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x8c },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_0[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_0[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x00 },
@@ -4880,7 +4880,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_0[TAS5766M_EQ_REG_PER_STEP] =
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p1[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p1[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 1dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x14 },
@@ -5183,7 +5183,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p1[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p2[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p2[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 2dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x2c },
@@ -5486,7 +5486,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p2[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p3[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p3[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 3dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x46 },
@@ -5789,7 +5789,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p3[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p4[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p4[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 4dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x64 },
@@ -6092,7 +6092,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p4[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p5[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p5[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 5dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0x85 },
@@ -6395,7 +6395,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p5[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p6[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p6[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 6dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0xaa },
@@ -6698,7 +6698,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p6[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p7[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p7[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 7dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x00 },
     { 0x24, 0x1a, 0xd4 },
@@ -7001,7 +7001,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p7[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p8[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p8[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 8dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x01 },
     { 0x24, 0x1a, 0x03 },
@@ -7304,7 +7304,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p8[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_p9[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_p9[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 9dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x01 },
     { 0x24, 0x1a, 0x37 },
@@ -7607,7 +7607,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_p9[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pa[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pa[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 10dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x01 },
     { 0x24, 0x1a, 0x72 },
@@ -7910,7 +7910,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_pa[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pb[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pb[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 11dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x01 },
     { 0x24, 0x1a, 0xb5 },
@@ -8213,7 +8213,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_pb[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pc[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pc[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 12dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x01 },
     { 0x24, 0x1a, 0xff },
@@ -8516,7 +8516,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_pc[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pd[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pd[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 13dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x02 },
     { 0x24, 0x1a, 0x52 },
@@ -8819,7 +8819,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_pd[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pe[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pe[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 14dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x02 },
     { 0x24, 0x1a, 0xb0 },
@@ -9122,7 +9122,7 @@ static const reg_sequence_eq TAS5766m_eq_registers_pe[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq TAS5766m_eq_registers_pf[TAS5766M_EQ_REG_PER_STEP] = {
+static const reg_sequence_eq tas5766m_eq_registers_pf[TAS5766M_EQ_REG_PER_STEP] = {
     { 0x24, 0x18, 0x08 }, //  Biquad -  BQ1 Left   -     Filter: Equalizer (Q Factor)  Frequency: 20 Hz  Gain: 15dB  QVal: 2  Bandwidth: 1000 Hz
     { 0x24, 0x19, 0x03 },
     { 0x24, 0x1a, 0x18 },
@@ -9425,38 +9425,38 @@ static const reg_sequence_eq TAS5766m_eq_registers_pf[TAS5766M_EQ_REG_PER_STEP] 
     { 0x26, 0x53, 0x4f },
 };
 
-static const reg_sequence_eq *TAS5766m_eq_registers[] = {
-    TAS5766m_eq_registers_mf ,
-    TAS5766m_eq_registers_me ,
-    TAS5766m_eq_registers_md ,
-    TAS5766m_eq_registers_mc ,
-    TAS5766m_eq_registers_mb ,
-    TAS5766m_eq_registers_ma ,
-    TAS5766m_eq_registers_m9 ,
-    TAS5766m_eq_registers_m8 ,
-    TAS5766m_eq_registers_m7 ,
-    TAS5766m_eq_registers_m6 ,
-    TAS5766m_eq_registers_m5 ,
-    TAS5766m_eq_registers_m4 ,
-    TAS5766m_eq_registers_m3 ,
-    TAS5766m_eq_registers_m2 ,
-    TAS5766m_eq_registers_m1 ,
-    TAS5766m_eq_registers_0  ,
-    TAS5766m_eq_registers_p1 ,
-    TAS5766m_eq_registers_p2 ,
-    TAS5766m_eq_registers_p3 ,
-    TAS5766m_eq_registers_p4 ,
-    TAS5766m_eq_registers_p5 ,
-    TAS5766m_eq_registers_p6 ,
-    TAS5766m_eq_registers_p7 ,
-    TAS5766m_eq_registers_p8 ,
-    TAS5766m_eq_registers_p9 ,
-    TAS5766m_eq_registers_pa ,
-    TAS5766m_eq_registers_pb ,
-    TAS5766m_eq_registers_pc ,
-    TAS5766m_eq_registers_pd ,
-    TAS5766m_eq_registers_pe ,
-    TAS5766m_eq_registers_pf ,
+static const reg_sequence_eq *tas5766m_eq_registers[] = {
+    tas5766m_eq_registers_mf ,
+    tas5766m_eq_registers_me ,
+    tas5766m_eq_registers_md ,
+    tas5766m_eq_registers_mc ,
+    tas5766m_eq_registers_mb ,
+    tas5766m_eq_registers_ma ,
+    tas5766m_eq_registers_m9 ,
+    tas5766m_eq_registers_m8 ,
+    tas5766m_eq_registers_m7 ,
+    tas5766m_eq_registers_m6 ,
+    tas5766m_eq_registers_m5 ,
+    tas5766m_eq_registers_m4 ,
+    tas5766m_eq_registers_m3 ,
+    tas5766m_eq_registers_m2 ,
+    tas5766m_eq_registers_m1 ,
+    tas5766m_eq_registers_0  ,
+    tas5766m_eq_registers_p1 ,
+    tas5766m_eq_registers_p2 ,
+    tas5766m_eq_registers_p3 ,
+    tas5766m_eq_registers_p4 ,
+    tas5766m_eq_registers_p5 ,
+    tas5766m_eq_registers_p6 ,
+    tas5766m_eq_registers_p7 ,
+    tas5766m_eq_registers_p8 ,
+    tas5766m_eq_registers_p9 ,
+    tas5766m_eq_registers_pa ,
+    tas5766m_eq_registers_pb ,
+    tas5766m_eq_registers_pc ,
+    tas5766m_eq_registers_pd ,
+    tas5766m_eq_registers_pe ,
+    tas5766m_eq_registers_pf ,
 };
 
 #ifdef __cplusplus

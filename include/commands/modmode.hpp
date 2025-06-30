@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class ModulationCommand : public Command
 {
@@ -187,7 +187,7 @@ private:
             TAS5766M_MOD_MODE mode;
             TAS5766M_SW_FREQ freq;
             TAS5766M_BD_FREQ bd_freq;
-            TAS5766m.getModulationMode(&mode, &freq, &bd_freq);
+            Tas5766m.getModulationMode(&mode, &freq, &bd_freq);
             ESP_LOGI(TAG, "Current modulation mode is %s, dsp processing freq: %s, output switching freq: %s", 
                 mod_mode_to_string(mode), sw_freq_to_string(freq), bd_freq_to_string(bd_freq));
             return 0;
@@ -219,7 +219,7 @@ private:
         TAS5766M_BD_FREQ bd_freq = map_bd_freq(_bd_freq);
         ESP_LOGI("CMD", "Setting modulation mode to %s, dsp processing freq: %s, switching freq: %s", 
             mod_mode_to_string(mode), sw_freq_to_string(freq), bd_freq_to_string(bd_freq));
-        TAS5766m.setModulationMode(mode, freq, bd_freq);
+        Tas5766m.setModulationMode(mode, freq, bd_freq);
         return 0;
     }
 

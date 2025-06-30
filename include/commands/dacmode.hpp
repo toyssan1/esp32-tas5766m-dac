@@ -6,7 +6,7 @@
 #include "command.hpp"
 #include "argtable3/argtable3.h"
 
-extern TAS5766m TAS5766m;
+extern tas5766m Tas5766m;
 
 class DacModeCommand : public Command
 {
@@ -53,7 +53,7 @@ private:
         if (args.mode->count == 0)
         {
             TAS5766M_DAC_MODE mode;
-            TAS5766m.getDacMode(&mode);
+            Tas5766m.getDacMode(&mode);
             ESP_LOGI(TAG, "Current DAC mode is %s", mode == TAS5766M_DAC_MODE_BTL ? "BTL" : "PBTL");
             return 0;
         }
@@ -64,11 +64,11 @@ private:
         {
         case DAC_MODE_BTL:
             ESP_LOGI(TAG, "Setting DAC mode to BTL");
-            TAS5766m.setDacMode(TAS5766M_DAC_MODE_BTL);
+            Tas5766m.setDacMode(TAS5766M_DAC_MODE_BTL);
             break;
         case DAC_MODE_PBTL:
             ESP_LOGI(TAG, "Setting DAC mode to PBTL");
-            TAS5766m.setDacMode(TAS5766M_DAC_MODE_PBTL);
+            Tas5766m.setDacMode(TAS5766M_DAC_MODE_PBTL);
             break;
         case DAC_MODE_INVALID:
             ESP_LOGI(TAG, "Invalid DAC mode! Must be 'btl' or 'pbtl'.");
