@@ -105,6 +105,6 @@ TAS5766m_registers	startup/TAS5766m_2.0+3-band_drc+agl_-12db.h	/^static const TA
 TAS5766m_registers	startup/TAS5766m_2.0+3-band_drc.h	/^static const TAS5766m_cfg_reg_t TAS5766m_registers[] = {$/;"	v	typeref:typename:const TAS5766m_cfg_reg_t[]
 TAS5766m_registers	startup/TAS5766m_2.0+agl_-12db.h	/^static const TAS5766m_cfg_reg_t TAS5766m_registers[] = {$/;"	v	typeref:typename:const TAS5766m_cfg_reg_t[]
 TAS5766m_registers	startup/TAS5766m_2.0+basic.h	/^static const TAS5766m_cfg_reg_t TAS5766m_registers[] = {$/;"	v	typeref:typename:const TAS5766m_cfg_reg_t[]
-TAS5766m_registers	startup/TAS5766m_2.0+minimal.h	/^static const TAS5766m_cfg_reg_t TAS5766m_registers[] = {$/;"	v	typeref:typename:const TAS5766m_cfg_reg_t[]
+TAS5766m_registers	startup/tas5766m_2.0+minimal.h	/^static const TAS5766m_cfg_reg_t TAS5766m_registers[] = {$/;"	v	typeref:typename:const TAS5766m_cfg_reg_t[]
 value	startup/tas5766m.h	/^  uint8_t value;$/;"	m	struct:__anonc8c30ce40108	typeref:typename:uint8_t
 wire	tas5766m.hpp	/^    TwoWire *wire;$/;"	m	class:TAS5766m	typeref:typename:TwoWire *
