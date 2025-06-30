@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-static const tas5766m_cfg_reg_t TAS5766m_registers[] = {
+static const tas5766m_cfg_reg_t tas5766m_registers[] = {
 // RESET
     { 0x03, 0x00 },
     { 0x46, 0x01 },

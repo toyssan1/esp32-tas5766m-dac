@@ -230,8 +230,8 @@ esp_err_t TAS5766m_init()
   vTaskDelay(20 / portTICK_RATE_MS);
   // 5. Wait 5ms at least. Then initialize the DSP Coefficient, then set the device to Play state.
   int ret = TAS5766m_transmit_registers(
-      TAS5766m_registers,
-      sizeof(TAS5766m_registers) / sizeof(TAS5766m_registers[0]));
+      tas5766m_registers,
+      sizeof(tas5766m_registers) / sizeof(tas5766m_registers[0]));
   ESP_ERROR_CHECK(TAS5766m_set_state(TAS5766M_CTRL_PLAY));
 
   TAS5766M_ASSERT(ret, "Fail to initialize TAS5766m PA", ESP_FAIL);
