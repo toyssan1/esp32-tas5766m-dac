@@ -10,4 +10,4 @@
 typedef struct {
   uint8_t offset;
   uint8_t value;
-} TAS5766m_cfg_reg_t;
+} tas5766m_cfg_reg_t;

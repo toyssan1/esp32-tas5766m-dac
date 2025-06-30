@@ -158,7 +158,7 @@ esp_err_t TAS5766m_write_bytes(uint8_t *reg,
   return ret;
 }
 
-static esp_err_t TAS5766m_transmit_registers(const TAS5766m_cfg_reg_t *conf_buf, int size)
+static esp_err_t TAS5766m_transmit_registers(const tas5766m_cfg_reg_t *conf_buf, int size)
 {
   int i = 0;
   esp_err_t ret = ESP_OK;
